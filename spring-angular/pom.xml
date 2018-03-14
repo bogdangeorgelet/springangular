@@ -9,7 +9,7 @@
 	<packaging>jar</packaging>
 
 	<name>spring-angular</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Demo project for Spring Boot and Angular</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
