@@ -13,6 +13,17 @@ public class Client {
     @Column(name = "name")
     private String name;
 
+    public String getCnp() {
+        return cnp;
+    }
+
+    public void setCnp(String cnp) {
+        this.cnp = cnp;
+    }
+
+    @Column(name = "cnp")
+    private String cnp;
+
     @Column(name = "address")
     private String address;
 
@@ -57,5 +68,6 @@ public class Client {
         this.company = company;
     }
 
-
+    public Client() {
+    }
 }

@@ -10,62 +10,12 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="SpringAngularApplication.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/spring-angular/src/main/java/com/example/springangularapp/springangular/SpringAngularApplication.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Company.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/spring-angular/src/main/java/com/example/springangularapp/springangular/Company.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="16" column="24" lean-forward="true" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#290#291#0" expanded="true" />
-                <element signature="e#320#321#0" expanded="true" />
-                <element signature="e#371#372#0" expanded="true" />
-                <element signature="e#409#410#0" expanded="true" />
-                <element signature="e#277#278#0" expanded="true" />
-                <element signature="e#302#303#0" expanded="true" />
-                <element signature="e#335#336#0" expanded="true" />
-                <element signature="e#363#364#0" expanded="true" />
-                <element signature="e#394#395#0" expanded="true" />
-                <element signature="e#421#422#0" expanded="true" />
-                <element signature="e#461#462#0" expanded="true" />
-                <element signature="e#493#494#0" expanded="true" />
-                <element signature="e#525#526#0" expanded="true" />
-                <element signature="e#553#554#0" expanded="true" />
-                <element signature="e#595#596#0" expanded="true" />
-                <element signature="e#629#630#0" expanded="true" />
-                <element signature="e#664#665#0" expanded="true" />
-                <element signature="e#695#696#0" expanded="true" />
-                <element signature="e#743#744#0" expanded="true" />
-                <element signature="e#783#784#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CompanyControler.java" pinned="false" current-in-tab="false">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="CompanyControler.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/spring-angular/src/main/java/com/example/springangularapp/controller/CompanyControler.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="180">
-              <caret line="17" column="37" lean-forward="true" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ClientControler.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/spring-angular/src/main/java/com/example/springangularapp/controller/ClientControler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="658">
-              <caret line="49" column="58" selection-start-line="49" selection-start-column="58" selection-end-line="49" selection-end-column="58" />
+              <caret line="17" column="37" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -82,54 +32,8 @@
       <file leaf-file-name="ReviewRepository.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/spring-angular/src/main/java/com/example/springangularapp/repository/ReviewRepository.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ClientRepositoy.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/spring-angular/src/main/java/com/example/springangularapp/repository/ClientRepositoy.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Client.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/spring-angular/src/main/java/com/example/springangularapp/springangular/Client.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="18" column="27" lean-forward="true" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#388#389#0" expanded="true" />
-                <element signature="e#413#414#0" expanded="true" />
-                <element signature="e#446#447#0" expanded="true" />
-                <element signature="e#474#475#0" expanded="true" />
-                <element signature="e#505#506#0" expanded="true" />
-                <element signature="e#532#533#0" expanded="true" />
-                <element signature="e#572#573#0" expanded="true" />
-                <element signature="e#604#605#0" expanded="true" />
-                <element signature="e#638#639#0" expanded="true" />
-                <element signature="e#668#669#0" expanded="true" />
-                <element signature="e#714#715#0" expanded="true" />
-                <element signature="e#752#753#0" expanded="true" />
-                <element signature="e#787#788#0" expanded="true" />
-                <element signature="e#817#818#0" expanded="true" />
-                <element signature="e#864#865#0" expanded="true" />
-                <element signature="e#902#903#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Review.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/spring-angular/src/main/java/com/example/springangularapp/springangular/Review.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+            <state relative-caret-position="105">
+              <caret line="8" selection-start-line="8" selection-end-line="8" />
             </state>
           </provider>
         </entry>
@@ -185,9 +89,9 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="4">
-    <option name="x" value="1012" />
+    <option name="x" value="680" />
     <option name="y" value="24" />
-    <option name="width" value="1248" />
+    <option name="width" value="1731" />
     <option name="height" value="1416" />
   </component>
   <component name="ProjectView">
@@ -195,9 +99,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -205,108 +106,19 @@
               <item name="springangular" type="b2602c69:ProjectViewProjectNode" />
               <item name="springangular" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="springangular" type="b2602c69:ProjectViewProjectNode" />
-              <item name="springangular" type="462c0819:PsiDirectoryNode" />
-              <item name="spring-angular" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="springangular" type="b2602c69:ProjectViewProjectNode" />
-              <item name="springangular" type="462c0819:PsiDirectoryNode" />
-              <item name="spring-angular" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="springangular" type="b2602c69:ProjectViewProjectNode" />
-              <item name="springangular" type="462c0819:PsiDirectoryNode" />
-              <item name="spring-angular" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="springangular" type="b2602c69:ProjectViewProjectNode" />
-              <item name="springangular" type="462c0819:PsiDirectoryNode" />
-              <item name="spring-angular" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="springangular" type="b2602c69:ProjectViewProjectNode" />
-              <item name="springangular" type="462c0819:PsiDirectoryNode" />
-              <item name="spring-angular" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="springangular" type="b2602c69:ProjectViewProjectNode" />
-              <item name="springangular" type="462c0819:PsiDirectoryNode" />
-              <item name="spring-angular" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="example" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="springangular" type="b2602c69:ProjectViewProjectNode" />
-              <item name="springangular" type="462c0819:PsiDirectoryNode" />
-              <item name="spring-angular" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="example" type="462c0819:PsiDirectoryNode" />
-              <item name="springangularapp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="springangular" type="b2602c69:ProjectViewProjectNode" />
-              <item name="springangular" type="462c0819:PsiDirectoryNode" />
-              <item name="spring-angular" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="example" type="462c0819:PsiDirectoryNode" />
-              <item name="springangularapp" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="springangular" type="b2602c69:ProjectViewProjectNode" />
-              <item name="springangular" type="462c0819:PsiDirectoryNode" />
-              <item name="spring-angular" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="example" type="462c0819:PsiDirectoryNode" />
-              <item name="springangularapp" type="462c0819:PsiDirectoryNode" />
-              <item name="repository" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="springangular" type="b2602c69:ProjectViewProjectNode" />
-              <item name="springangular" type="462c0819:PsiDirectoryNode" />
-              <item name="spring-angular" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="example" type="462c0819:PsiDirectoryNode" />
-              <item name="springangularapp" type="462c0819:PsiDirectoryNode" />
-              <item name="springangular" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/spring-security-registration-master" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -391,44 +203,44 @@
       <option name="presentableId" value="Default" />
       <updated>1521095537424</updated>
       <workItem from="1521095538979" duration="1642000" />
+      <workItem from="1521106450590" duration="46000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6436000" />
+    <option name="totallyTimeSpent" value="6482000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1012" y="24" width="1248" height="1416" extended-state="4" />
-    <editor active="true" />
+    <frame x="680" y="24" width="1731" height="1416" extended-state="4" />
     <layout>
-      <window_info anchor="right" id="Palette" />
+      <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" />
-      <window_info anchor="right" id="Palette&#9;" />
-      <window_info id="Image Layers" />
-      <window_info anchor="right" id="Capture Analysis" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
-      <window_info anchor="right" id="Maven Projects" />
-      <window_info anchor="bottom" id="Database Changes" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.2056575" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info id="Capture Tool" />
-      <window_info id="Designer" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.36698717" />
-      <window_info anchor="right" id="Database" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
+      <window_info id="Image Layers" order="2" />
+      <window_info anchor="right" id="Capture Analysis" order="3" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="right" id="Maven Projects" order="3" />
+      <window_info anchor="bottom" id="Database Changes" order="7" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.2056575" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.3295107" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info id="Designer" order="2" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26458696" />
+      <window_info anchor="right" id="Database" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info id="UI Designer" />
-      <window_info anchor="right" id="Theme Preview" />
+      <window_info id="UI Designer" order="2" />
+      <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info id="Favorites" side_tool="true" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Messages" order="7" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -438,164 +250,10 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/spring-angular/src/main/java/com/example/springangularapp/springangular/Review.java">
+    <entry file="file://$PROJECT_DIR$/spring-angular/src/main/java/com/example/springangularapp/controller/CompanyControler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spring-angular/src/main/java/com/example/springangularapp/springangular/SpringAngularApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spring-angular/src/main/java/com/example/springangularapp/springangular/Client.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="27" lean-forward="true" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#388#389#0" expanded="true" />
-            <element signature="e#413#414#0" expanded="true" />
-            <element signature="e#446#447#0" expanded="true" />
-            <element signature="e#474#475#0" expanded="true" />
-            <element signature="e#505#506#0" expanded="true" />
-            <element signature="e#532#533#0" expanded="true" />
-            <element signature="e#572#573#0" expanded="true" />
-            <element signature="e#604#605#0" expanded="true" />
-            <element signature="e#638#639#0" expanded="true" />
-            <element signature="e#668#669#0" expanded="true" />
-            <element signature="e#714#715#0" expanded="true" />
-            <element signature="e#752#753#0" expanded="true" />
-            <element signature="e#787#788#0" expanded="true" />
-            <element signature="e#817#818#0" expanded="true" />
-            <element signature="e#864#865#0" expanded="true" />
-            <element signature="e#902#903#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spring-angular/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="705">
-          <caret line="47" column="21" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spring-angular/src/main/java/com/example/springangularapp/springangular/Company.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="56" lean-forward="true" selection-start-line="25" selection-start-column="56" selection-end-line="25" selection-end-column="56" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#290#291#0" expanded="true" />
-            <element signature="e#320#321#0" expanded="true" />
-            <element signature="e#371#372#0" expanded="true" />
-            <element signature="e#409#410#0" expanded="true" />
-            <element signature="e#277#278#0" expanded="true" />
-            <element signature="e#302#303#0" expanded="true" />
-            <element signature="e#335#336#0" expanded="true" />
-            <element signature="e#363#364#0" expanded="true" />
-            <element signature="e#394#395#0" expanded="true" />
-            <element signature="e#421#422#0" expanded="true" />
-            <element signature="e#461#462#0" expanded="true" />
-            <element signature="e#493#494#0" expanded="true" />
-            <element signature="e#525#526#0" expanded="true" />
-            <element signature="e#553#554#0" expanded="true" />
-            <element signature="e#595#596#0" expanded="true" />
-            <element signature="e#629#630#0" expanded="true" />
-            <element signature="e#664#665#0" expanded="true" />
-            <element signature="e#695#696#0" expanded="true" />
-            <element signature="e#743#744#0" expanded="true" />
-            <element signature="e#783#784#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spring-angular/src/main/java/com/example/springangularapp/springangular/Review.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spring-angular/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="705">
-          <caret line="47" column="21" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spring-angular/src/main/java/com/example/springangularapp/springangular/SpringAngularApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spring-angular/src/main/java/com/example/springangularapp/springangular/Company.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="16" column="24" lean-forward="true" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#290#291#0" expanded="true" />
-            <element signature="e#320#321#0" expanded="true" />
-            <element signature="e#371#372#0" expanded="true" />
-            <element signature="e#409#410#0" expanded="true" />
-            <element signature="e#277#278#0" expanded="true" />
-            <element signature="e#302#303#0" expanded="true" />
-            <element signature="e#335#336#0" expanded="true" />
-            <element signature="e#363#364#0" expanded="true" />
-            <element signature="e#394#395#0" expanded="true" />
-            <element signature="e#421#422#0" expanded="true" />
-            <element signature="e#461#462#0" expanded="true" />
-            <element signature="e#493#494#0" expanded="true" />
-            <element signature="e#525#526#0" expanded="true" />
-            <element signature="e#553#554#0" expanded="true" />
-            <element signature="e#595#596#0" expanded="true" />
-            <element signature="e#629#630#0" expanded="true" />
-            <element signature="e#664#665#0" expanded="true" />
-            <element signature="e#695#696#0" expanded="true" />
-            <element signature="e#743#744#0" expanded="true" />
-            <element signature="e#783#784#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spring-angular/src/main/java/com/example/springangularapp/springangular/Client.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="18" column="27" lean-forward="true" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#388#389#0" expanded="true" />
-            <element signature="e#413#414#0" expanded="true" />
-            <element signature="e#446#447#0" expanded="true" />
-            <element signature="e#474#475#0" expanded="true" />
-            <element signature="e#505#506#0" expanded="true" />
-            <element signature="e#532#533#0" expanded="true" />
-            <element signature="e#572#573#0" expanded="true" />
-            <element signature="e#604#605#0" expanded="true" />
-            <element signature="e#638#639#0" expanded="true" />
-            <element signature="e#668#669#0" expanded="true" />
-            <element signature="e#714#715#0" expanded="true" />
-            <element signature="e#752#753#0" expanded="true" />
-            <element signature="e#787#788#0" expanded="true" />
-            <element signature="e#817#818#0" expanded="true" />
-            <element signature="e#864#865#0" expanded="true" />
-            <element signature="e#902#903#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spring-angular/src/main/java/com/example/springangularapp/repository/ReviewRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+        <state relative-caret-position="180">
+          <caret line="17" column="37" lean-forward="true" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
         </state>
       </provider>
     </entry>
@@ -606,30 +264,65 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spring-angular/src/main/java/com/example/springangularapp/controller/ClientRepositoy.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spring-angular/src/main/java/com/example/springangularapp/repository/ClientRepositoy.java">
+    <entry file="file://$PROJECT_DIR$/spring-angular/src/main/java/com/example/springangularapp/repository/ReviewRepository.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+        <state relative-caret-position="105">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/spring-angular/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="705">
+          <caret line="47" column="21" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-angular/src/main/java/com/example/springangularapp/springangular/Review.java" />
+    <entry file="file://$PROJECT_DIR$/spring-angular/src/main/java/com/example/springangularapp/springangular/SpringAngularApplication.java" />
+    <entry file="file://$PROJECT_DIR$/spring-angular/src/main/java/com/example/springangularapp/springangular/Client.java" />
+    <entry file="file://$PROJECT_DIR$/spring-angular/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="705">
+          <caret line="47" column="21" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-angular/src/main/java/com/example/springangularapp/springangular/Company.java" />
+    <entry file="file://$PROJECT_DIR$/spring-angular/src/main/java/com/example/springangularapp/springangular/Review.java" />
+    <entry file="file://$PROJECT_DIR$/spring-angular/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="705">
+          <caret line="47" column="21" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-angular/src/main/java/com/example/springangularapp/springangular/SpringAngularApplication.java" />
+    <entry file="file://$PROJECT_DIR$/spring-angular/src/main/java/com/example/springangularapp/springangular/Company.java" />
+    <entry file="file://$PROJECT_DIR$/spring-angular/src/main/java/com/example/springangularapp/springangular/Client.java" />
+    <entry file="file://$PROJECT_DIR$/spring-angular/src/main/java/com/example/springangularapp/repository/ReviewRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-angular/src/main/java/com/example/springangularapp/repository/CompanyRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-angular/src/main/java/com/example/springangularapp/repository/ClientRepositoy.java" />
     <entry file="file://$PROJECT_DIR$/spring-angular/src/main/java/com/example/springangularapp/controller/CompanyControler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
-          <caret line="17" column="37" lean-forward="true" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
+          <caret line="17" column="37" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spring-angular/src/main/java/com/example/springangularapp/controller/ClientControler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="658">
-          <caret line="49" column="58" selection-start-line="49" selection-start-column="58" selection-end-line="49" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-angular/src/main/java/com/example/springangularapp/controller/ClientControler.java" />
   </component>
   <component name="masterDetails">
     <states>

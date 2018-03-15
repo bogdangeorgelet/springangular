@@ -20,4 +20,7 @@ public class Review {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_company")
     private Company company;
+
+    public Review() {
+    }
 }

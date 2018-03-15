@@ -1,5 +1,6 @@
 package com.example.springangularapp.controller;
 
+import com.example.springangularapp.Util.CustomErrorType;
 import com.example.springangularapp.repository.ClientRepository;
 import com.example.springangularapp.entity.Client;
 import org.slf4j.Logger;
@@ -12,10 +13,15 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @RestController
 public class ClientController {
+    ClientController() {
+
+    }
+
     @Autowired
     ClientRepository clientRepository;
 
@@ -25,7 +31,7 @@ public class ClientController {
 
     @RequestMapping(value = "/client/", method = RequestMethod.GET)
     public ResponseEntity<List<Client>> listAllClients() {
-        List<Client> clients = clientRepository.findAllClients();
+        List<Client> clients = clientRepository.findAll();
         if (clients.isEmpty()) {
             return new ResponseEntity(HttpStatus.NO_CONTENT);
             // You many decide to return HttpStatus.NOT_FOUND
@@ -38,13 +44,13 @@ public class ClientController {
     @RequestMapping(value = "/cleint/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> getClient(@PathVariable("id") long id) {
         logger.info("Fetching Client with id {}", id);
-        Client client = clientRepository.findById(id);
+        Optional<Client> client = clientRepository.findById(id);
         if (client == null) {
             logger.error("Client with id {} not found.", id);
             return new ResponseEntity(new CustomErrorType("Client with id " + id
                     + " not found"), HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<Client>(client, HttpStatus.OK);
+        return new ResponseEntity<Client>(client.get(), HttpStatus.OK);
     }
 
     // -------------------Create a Client-------------------------------------------
@@ -53,12 +59,12 @@ public class ClientController {
     public ResponseEntity<?> createClient(@RequestBody Client client, UriComponentsBuilder ucBuilder) {
         logger.info("Creating Client : {}", client);
 
-        if (clientRepository.findByEmail(client.getEmail())) {
-            logger.error("Unable to create. A User with name {} already exist", user.getName());
+        if (clientRepository.findByCnp(client.getCnp()) != null) {
+            logger.error("Unable to create. A User with name {} already exist", client.getName());
             return new ResponseEntity(new CustomErrorType("Unable to create. A User with name " +
-                    user.getName() + " already exist."), HttpStatus.CONFLICT);
+                    client.getName() + " already exist."), HttpStatus.CONFLICT);
         }
-        clientRepository.saveClient(client);
+        clientRepository.save(client);
 
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(ucBuilder.path("/api/client/{id}").buildAndExpand(client.getId()).toUri());
