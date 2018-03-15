@@ -1,11 +1,11 @@
-package com.example.springangularapp.springangular;
+package com.example.springangularapp.controller;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
-import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.awt.*;
 
 
 @Controller

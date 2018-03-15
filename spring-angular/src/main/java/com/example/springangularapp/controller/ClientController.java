@@ -1,19 +1,25 @@
-package com.example.springangularapp.springangular;
+package com.example.springangularapp.controller;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import com.example.springangularapp.repository.ClientRepository;
+import com.example.springangularapp.entity.Client;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
-import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 
 @RestController
-public class ClientControler {
+public class ClientController {
     @Autowired
     ClientRepository clientRepository;
 
-    public static final Logger logger = LoggerFactory.getLogger(RestApiController.class);
+    public static final Logger logger = LoggerFactory.getLogger(ClientController.class);
 
     // -------------------Retrieve All Clients---------------------------------------------
 

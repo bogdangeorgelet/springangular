@@ -1,7 +1,4 @@
-package com.example.springangularapp.springangular;
-
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+package com.example.springangularapp.entity;
 
 import javax.persistence.*;
 import java.util.HashSet;

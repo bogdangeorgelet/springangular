@@ -1,6 +1,7 @@
-package com.example.springangularapp.springangular;
+package com.example.springangularapp.repository;
 
 
+import com.example.springangularapp.entity.Review;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 
