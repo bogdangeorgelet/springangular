@@ -18,18 +18,19 @@ import java.util.Optional;
 
 @RestController
 public class ClientController {
-    ClientController() {
 
-    }
 
     @Autowired
     ClientRepository clientRepository;
 
     public static final Logger logger = LoggerFactory.getLogger(ClientController.class);
 
+    ClientController() {
+
+    }
     // -------------------Retrieve All Clients---------------------------------------------
 
-    @RequestMapping(value = "/client/", method = RequestMethod.GET)
+    @RequestMapping(value = "/clients", method = RequestMethod.GET)
     public ResponseEntity<List<Client>> listAllClients() {
         List<Client> clients = clientRepository.findAll();
         if (clients.isEmpty()) {
@@ -39,10 +40,14 @@ public class ClientController {
         return new ResponseEntity<List<Client>>(clients, HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/hello", method = RequestMethod.GET)
+    public String sayHello() {
+        return "helo";
+    }
     // -------------------Retrieve Single Client------------------------------------------
 
-    @RequestMapping(value = "/cleint/{id}", method = RequestMethod.GET)
-    public ResponseEntity<?> getClient(@PathVariable("id") long id) {
+    @RequestMapping(value = "/client/{id}", method = RequestMethod.GET)
+    public ResponseEntity<?> getClient(@PathVariable("id") int id) {
         logger.info("Fetching Client with id {}", id);
         Optional<Client> client = clientRepository.findById(id);
         if (client == null) {
@@ -55,7 +60,7 @@ public class ClientController {
 
     // -------------------Create a Client-------------------------------------------
 
-    @RequestMapping(value = "/client/", method = RequestMethod.POST)
+    @RequestMapping(value = "/client", method = RequestMethod.POST)
     public ResponseEntity<?> createClient(@RequestBody Client client, UriComponentsBuilder ucBuilder) {
         logger.info("Creating Client : {}", client);
 
@@ -68,7 +73,7 @@ public class ClientController {
 
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(ucBuilder.path("/api/client/{id}").buildAndExpand(client.getId()).toUri());
-        return new ResponseEntity<String>(headers, HttpStatus.CREATED);
+        return new ResponseEntity<String>("S-a introdus cu succes",HttpStatus.CREATED);
     }
 
 }

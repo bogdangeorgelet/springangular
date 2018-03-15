@@ -68,6 +68,12 @@ public class Client {
         this.company = company;
     }
 
+    public Client(String name, String cnp, String address) {
+        this.name = name;
+        this.cnp = cnp;
+        this.address = address;
+    }
+
     public Client() {
     }
 }
