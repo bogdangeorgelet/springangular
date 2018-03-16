@@ -31,14 +31,15 @@ public class SpringAngularApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         Company company = new Company("nameCompany", "email@company.ro", "passhash");
+        Client a = new Client("petrica care a dat review", "cnp", "address", company);
         Set reviews = new HashSet<Review>() {{
-            add(new Review("ceas", 4.0, company));
-            add(new Review("slab", 1.0, company));
+            add(new Review("ceas", 4.0, company, a));
+            add(new Review("slab", 1.0, company, a));
         }};
 
 
         Set clients = new HashSet<Client>() {{
-            add(new Client("petrica", "cnp", "address", company));
+            add(a);
             add(new Client("petrica", "cnp", "address", company));
             add(new Client("petrica", "cnp", "address", company));
             add(new Client("petrica", "cnp", "address", company));

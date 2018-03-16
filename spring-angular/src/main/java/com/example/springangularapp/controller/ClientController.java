@@ -40,10 +40,7 @@ public class ClientController {
         return new ResponseEntity<List<Client>>(clients, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/hello", method = RequestMethod.GET)
-    public String sayHello() {
-        return "helo";
-    }
+
     // -------------------Retrieve Single Client------------------------------------------
 
     @RequestMapping(value = "/client/{id}", method = RequestMethod.GET)
@@ -79,7 +76,7 @@ public class ClientController {
 
     //---------------------------get all clients from a company------------------------------
 
-    @RequestMapping(value = "/clients/{company_id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/clients/company/{company_id}", method = RequestMethod.GET)
     public ResponseEntity<List<Client>> listAllClientsByCompanyId(@PathVariable int company_id) {
         List<Client> clients = clientRepository.findClientsByCompanyId(company_id);
         if (clients.isEmpty()) {

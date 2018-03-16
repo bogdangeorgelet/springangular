@@ -66,10 +66,11 @@ public class Review {
     @JoinColumn(name = "id_company")
     private Company company;
 
-    public Review(String text, double value, Company company) {
+    public Review(String text, double value, Company company, Client client) {
         this.text = text;
         this.value = value;
         this.company = company;
+        this.client = client;
     }
 
     protected Review() {
