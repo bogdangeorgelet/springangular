@@ -1,18 +1,17 @@
 package com.example.springangularapp.repository;
 
 
-import com.example.springangularapp.entity.Client;
-import com.example.springangularapp.entity.Company;
+import com.example.springangularapp.entity.ClientEntity;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface ClientRepository extends CrudRepository<Client, Integer> {
-    List<Client> findAll();
+public interface ClientRepository extends CrudRepository<ClientEntity, Integer> {
+    List<ClientEntity> findAll();
 
-    List<Client> findClientsByCompanyId(int Id);
+    List<ClientEntity> findClientsByCompanyEntityId(int Id);
 
-    Client findByCnp(String email);
+    ClientEntity findByCnp(String email);
 
 
 }

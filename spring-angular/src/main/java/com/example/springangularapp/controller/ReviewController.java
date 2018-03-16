@@ -1,9 +1,10 @@
 package com.example.springangularapp.controller;
 
 import com.example.springangularapp.Util.CustomErrorType;
-import com.example.springangularapp.entity.Client;
-import com.example.springangularapp.entity.Company;
-import com.example.springangularapp.entity.Review;
+import com.example.springangularapp.dto.ReviewDto;
+import com.example.springangularapp.entity.ClientEntity;
+import com.example.springangularapp.entity.CompanyEntity;
+import com.example.springangularapp.entity.ReviewEntity;
 import com.example.springangularapp.repository.ClientRepository;
 import com.example.springangularapp.repository.CompanyRepository;
 import com.example.springangularapp.repository.ReviewRepository;
@@ -30,63 +31,61 @@ public class ReviewController {
     ClientRepository clientRepository;
 
 
-    //---------------------------get all reviews from a company by Id------------------------------
+    //---------------------------get all reviewEntities from a companyEntity by Id------------------------------
 
     @RequestMapping(value = "/reviews/company/{company_id}", method = RequestMethod.GET)
-    public ResponseEntity<List<Review>> listAllReviewsByCompanyId(@PathVariable int company_id) {
-        List<Review> reviews = (List<Review>) reviewRepository.findReviewsByCompanyId(company_id);
-        if (reviews.isEmpty()) {
-            return new ResponseEntity(HttpStatus.NO_CONTENT);
-            // You many decide to return HttpStatus.NOT_FOUND
+    public ResponseEntity<List<ReviewDto>> listAllReviewsByCompanyId(@PathVariable int company_id) {
+        List<ReviewEntity> reviewEntities = reviewRepository.findReviewsByCompanyEntityId(company_id);
+        if (reviewEntities.isEmpty()) {
+            return ResponseEntity.noContent().build();
         }
-        return new ResponseEntity<List<Review>>(reviews, HttpStatus.OK);
+        return ResponseEntity.ok(ReviewEntity.toDtos(reviewEntities));
     }
 
-    //---------------------------get all reviews from a client by Id------------------------------
+    //---------------------------get all reviewEntities from a client by Id------------------------------
 
     @RequestMapping(value = "/reviews/client/{client_id}", method = RequestMethod.GET)
-    public ResponseEntity<List<Review>> listAllReviewsByClientId(@PathVariable int client_id) {
-        List<Review> reviews = (List<Review>) reviewRepository.findReviewsByClientId(client_id);
-        if (reviews.isEmpty()) {
-            return new ResponseEntity(HttpStatus.NO_CONTENT);
-            // You many decide to return HttpStatus.NOT_FOUND
+    public ResponseEntity<List<ReviewDto>> listAllReviewsByClientId(@PathVariable int client_id) {
+        List<ReviewEntity> reviewEntities = reviewRepository.findReviewsByClientId(client_id);
+        if (reviewEntities.isEmpty()) {
+            return ResponseEntity.noContent().build();
         }
-        return new ResponseEntity<List<Review>>(reviews, HttpStatus.OK);
+        return ResponseEntity.ok(ReviewEntity.toDtos(reviewEntities));
     }
 
 
     // -------------------Retrieve All Clients---------------------------------------------
 
     @RequestMapping(value = "/reviews", method = RequestMethod.GET)
-    public ResponseEntity<List<Review>> listAllReviews() {
-        List<Review> clients = reviewRepository.findAll();
+    public ResponseEntity<List<ReviewDto>> listAllReviews() {
+        List<ReviewEntity> clients = reviewRepository.findAll();
         if (clients.isEmpty()) {
-            return new ResponseEntity(HttpStatus.NO_CONTENT);
-            // You many decide to return HttpStatus.NOT_FOUND
+            return ResponseEntity.noContent().build();
         }
-        return new ResponseEntity<List<Review>>(clients, HttpStatus.OK);
+        return ResponseEntity.ok(ReviewEntity.toDtos(clients));
     }
 
 
     // -------------------Insert a review-------------------------------------------
 
     @RequestMapping(value = "/review/company/{company_id}/client/{client_id}", method = RequestMethod.POST)
-    public ResponseEntity<?> createClient(@RequestBody Review review, @PathVariable int company_id, @PathVariable int client_id, UriComponentsBuilder ucBuilder) {
-        logger.info("Creating review : {}", review);
-        System.out.println("company id:" + company_id);
+    public ResponseEntity<?> createClient(@RequestBody ReviewDto reviewDto, @PathVariable int company_id, @PathVariable int client_id, UriComponentsBuilder ucBuilder) {
+        logger.info("Creating reviewDto : {}", reviewDto);
+        System.out.println("companyEntity id:" + company_id);
         System.out.println("clieny id:" + client_id);
-        Optional<Company> company = companyRepository.findById(company_id);
-        Optional<Client> client = clientRepository.findById(client_id);
+        Optional<CompanyEntity> company = companyRepository.findById(company_id);
+        Optional<ClientEntity> client = clientRepository.findById(client_id);
         if (company.isPresent() && client.isPresent()) {
-            review.setClient(client.get());
-            review.setCompany(company.get());
-            reviewRepository.save(review);
+            reviewDto.setClientName(client.get().getName());
+            reviewDto.setCompanyName(company.get().getName());
+            ReviewEntity reviewEntity = new ReviewEntity();
+            reviewEntity.update(reviewDto);
+            reviewRepository.save(reviewEntity);
             HttpHeaders headers = new HttpHeaders();
-            headers.setLocation(ucBuilder.path("/api/client/{id}").buildAndExpand(review.getId()).toUri());
-            return new ResponseEntity<String>("S-a introdus cu succes reviewul", HttpStatus.CREATED);
+            headers.setLocation(ucBuilder.path("/api/client/{id}").buildAndExpand(reviewDto.getId()).toUri());
+            return ResponseEntity.ok(HttpStatus.CREATED);
         } else
-            return new ResponseEntity(new CustomErrorType("Unable to insert this review, company or client doesn;t exist."), HttpStatus.CONFLICT);
-
+            return ResponseEntity.status(HttpStatus.CONFLICT).build();
 
     }
 }

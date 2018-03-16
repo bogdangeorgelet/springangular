@@ -1,9 +1,9 @@
 package com.example.springangularapp.controller;
 
 import com.example.springangularapp.Util.CustomErrorType;
-import com.example.springangularapp.entity.Client;
-import com.example.springangularapp.entity.Company;
-import com.example.springangularapp.repository.ClientRepository;
+import com.example.springangularapp.dto.CompanyDto;
+import com.example.springangularapp.entity.ClientEntity;
+import com.example.springangularapp.entity.CompanyEntity;
 import com.example.springangularapp.repository.CompanyRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,7 +15,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import java.awt.*;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,42 +27,44 @@ public class CompanyControler {
 
     public static final Logger logger = LoggerFactory.getLogger(ClientController.class);
 
+//-------------------------------register companyEntity-----------------------------
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public ResponseEntity<?> createClient(@RequestBody Company company, UriComponentsBuilder ucBuilder) {
-        logger.info("Creating Client : {}", company);
+    public ResponseEntity<?> createClient(@RequestBody CompanyDto companyDto, UriComponentsBuilder ucBuilder) {
+        logger.info("Creating ClientEntity : {}", companyDto);
 
-        if (companyRepository.findByEmail(company.getEmail()) != null) {
-            logger.error("Unable to create. A company with email {} already exist", company.getEmail());
-            return new ResponseEntity(new CustomErrorType("Unable to create. A User with company " +
-                    company.getEmail() + " already exist."), HttpStatus.CONFLICT);
+        if (companyRepository.findByEmail(companyDto.getEmail()) != null) {
+            logger.error("Unable to create. A companyEntity with email {} already exist", companyDto.getEmail());
+            return ResponseEntity.status(HttpStatus.CONFLICT).build();
         }
-        companyRepository.save(company);
 
-        HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(ucBuilder.path("/api/company/{id}").buildAndExpand(company.getId()).toUri());
-        return new ResponseEntity<String>("S-a inregitrat  cu succes",HttpStatus.CREATED);
+        CompanyEntity companyEntity = new CompanyEntity();
+        companyEntity.update(companyDto);
+        companyRepository.save(companyEntity);
+
+        return ResponseEntity.ok(HttpStatus.CREATED);
     }
+    //-------------------------- get ALl companies---------------------------------
+
     @RequestMapping(value = "/companies", method = RequestMethod.GET)
-    public ResponseEntity<java.util.List<Company>> listAllClients() {
-        java.util.List<Company> companies = (List<Company>) companyRepository.findAll();
+    public ResponseEntity<List<CompanyDto>> listAllCompanies() {
+        List<CompanyEntity> companies = (List<CompanyEntity>) companyRepository.findAll();
         if (companies.isEmpty()) {
-            return new ResponseEntity(HttpStatus.NO_CONTENT);
+            return ResponseEntity.noContent().build();
             // You many decide to return HttpStatus.NOT_FOUND
         }
-        return new ResponseEntity<List<Company>>(companies, HttpStatus.OK);
+        return ResponseEntity.ok(CompanyEntity.toDtos(companies));
     }
 
-    //-------------------get company by id--------------------
+    //-------------------get companyEntity by id--------------------
     @RequestMapping(value = "/company/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> getClient(@PathVariable("id") int id) {
-        logger.info("Fetching Company with id {}", id);
-        Optional<Company> company = companyRepository.findById(id);
-        if (company == null) {
-            logger.error("Client with id {} not found.", id);
-            return new ResponseEntity(new CustomErrorType("Client with id " + id
-                    + " not found"), HttpStatus.NOT_FOUND);
+        logger.info("Fetching CompanyEntity with id {}", id);
+        Optional<CompanyEntity> company = companyRepository.findById(id);
+        if (!company.isPresent()) {
+            logger.error("ClientEntity with id {} not found.", id);
+            return ResponseEntity.notFound().build();
         }
-        return new ResponseEntity<Company>(company.get(), HttpStatus.OK);
+        return ResponseEntity.ok(company.get().toDto());
     }
 }

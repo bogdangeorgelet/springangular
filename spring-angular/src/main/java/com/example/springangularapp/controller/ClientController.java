@@ -1,8 +1,9 @@
 package com.example.springangularapp.controller;
 
 import com.example.springangularapp.Util.CustomErrorType;
+import com.example.springangularapp.dto.ClientDto;
+import com.example.springangularapp.entity.ClientEntity;
 import com.example.springangularapp.repository.ClientRepository;
-import com.example.springangularapp.entity.Client;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,65 +26,60 @@ public class ClientController {
 
     public static final Logger logger = LoggerFactory.getLogger(ClientController.class);
 
-    ClientController() {
 
-    }
     // -------------------Retrieve All Clients---------------------------------------------
 
     @RequestMapping(value = "/clients", method = RequestMethod.GET)
-    public ResponseEntity<List<Client>> listAllClients() {
-        List<Client> clients = clientRepository.findAll();
+    public ResponseEntity<List<ClientDto>> listAllClients() {
+        List<ClientEntity> clients = clientRepository.findAll();
         if (clients.isEmpty()) {
-            return new ResponseEntity(HttpStatus.NO_CONTENT);
-            // You many decide to return HttpStatus.NOT_FOUND
+            return ResponseEntity.noContent().build();
         }
-        return new ResponseEntity<List<Client>>(clients, HttpStatus.OK);
+        return ResponseEntity.ok(ClientEntity.toDtos(clients));
     }
 
 
-    // -------------------Retrieve Single Client------------------------------------------
+    // -------------------Retrieve Single ClientEntity------------------------------------------
 
     @RequestMapping(value = "/client/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> getClient(@PathVariable("id") int id) {
-        logger.info("Fetching Client with id {}", id);
-        Optional<Client> client = clientRepository.findById(id);
-        if (client == null) {
-            logger.error("Client with id {} not found.", id);
-            return new ResponseEntity(new CustomErrorType("Client with id " + id
-                    + " not found"), HttpStatus.NOT_FOUND);
+        logger.info("Fetching ClientEntity with id {}", id);
+        Optional<ClientEntity> client = clientRepository.findById(id);
+        if (!client.isPresent()) {
+            logger.error("ClientEntity with id {} not found.", id);
+            return ResponseEntity.notFound().build();
         }
-        return new ResponseEntity<Client>(client.get(), HttpStatus.OK);
+
+        return ResponseEntity.ok(client.get().toDto());
     }
 
-    // -------------------Create a Client-------------------------------------------
+    // -------------------Create a ClientEntity-------------------------------------------
 
     @RequestMapping(value = "/client", method = RequestMethod.POST)
-    public ResponseEntity<?> createClient(@RequestBody Client client, UriComponentsBuilder ucBuilder) {
-        logger.info("Creating Client : {}", client);
+    public ResponseEntity<?> createClient(@RequestBody ClientDto client, UriComponentsBuilder ucBuilder) {
+        logger.info("Creating ClientEntity : {}", client);
 
         if (clientRepository.findByCnp(client.getCnp()) != null) {
             logger.error("Unable to create. A User with name {} already exist", client.getName());
-            return new ResponseEntity(new CustomErrorType("Unable to create. A User with name " +
-                    client.getName() + " already exist."), HttpStatus.CONFLICT);
+            return ResponseEntity.status(HttpStatus.CONFLICT).build();
         }
-        clientRepository.save(client);
+        ClientEntity clientEntity = new ClientEntity();
+        clientEntity.update(client);
+        clientRepository.save(clientEntity);
 
-        HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(ucBuilder.path("/api/client/{id}").buildAndExpand(client.getId()).toUri());
-        return new ResponseEntity<String>("S-a introdus cu succes",HttpStatus.CREATED);
+        return ResponseEntity.ok(HttpStatus.CREATED);
     }
 
 
-    //---------------------------get all clients from a company------------------------------
+    //---------------------------get all clients from a companyEntity------------------------------
 
     @RequestMapping(value = "/clients/company/{company_id}", method = RequestMethod.GET)
-    public ResponseEntity<List<Client>> listAllClientsByCompanyId(@PathVariable int company_id) {
-        List<Client> clients = clientRepository.findClientsByCompanyId(company_id);
+    public ResponseEntity<List<ClientDto>> listAllClientsByCompanyId(@PathVariable int company_id) {
+        List<ClientEntity> clients = clientRepository.findClientsByCompanyEntityId(company_id);
         if (clients.isEmpty()) {
             return new ResponseEntity(HttpStatus.NO_CONTENT);
-            // You many decide to return HttpStatus.NOT_FOUND
         }
-        return new ResponseEntity<List<Client>>(clients, HttpStatus.OK);
+        return ResponseEntity.ok(ClientEntity.toDtos(clients));
     }
 
 }

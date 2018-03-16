@@ -1,8 +1,9 @@
 package com.example.springangularapp;
 
-import com.example.springangularapp.entity.Client;
-import com.example.springangularapp.entity.Company;
-import com.example.springangularapp.entity.Review;
+import com.example.springangularapp.dto.CompanyDto;
+import com.example.springangularapp.entity.ClientEntity;
+import com.example.springangularapp.entity.CompanyEntity;
+import com.example.springangularapp.entity.ReviewEntity;
 import com.example.springangularapp.repository.ClientRepository;
 import com.example.springangularapp.repository.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,36 +31,32 @@ public class SpringAngularApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Company company = new Company("nameCompany", "email@company.ro", "passhash");
-        Client a = new Client("petrica care a dat review", "cnp", "address", company);
-        Set reviews = new HashSet<Review>() {{
-            add(new Review("ceas", 4.0, company, a));
-            add(new Review("slab", 1.0, company, a));
-        }};
+//        CompanyDto companyEntity = new CompanyDto("nameCompany", "email@companyEntity.ro", "passhash");
+//        ClientEntity a = new ClientEntity("petrica care a dat review", "cnp", "address", companyEntity);
+//        Set reviews = new HashSet<ReviewEntity>() {{
+//            add(new ReviewEntity("ceas", 4.0, companyEntity, a));
+//            add(new ReviewEntity("slab", 1.0, companyEntity, a));
+//        }};
+//
+//
+//        Set clients = new HashSet<ClientEntity>() {{
+//            add(a);
+//            add(new ClientEntity("petrica", "cnp", "address", companyEntity));
+//            add(new ClientEntity("petrica", "cnp", "address", companyEntity));
+//            add(new ClientEntity("petrica", "cnp", "address", companyEntity));
+//            add(new ClientEntity("petrica", "cnp", "address", companyEntity));
+//        }};
+//        System.out.println("clients size: " + clients.size());
+//        companyRepository.save(companyEntity);
 
-
-        Set clients = new HashSet<Client>() {{
-            add(a);
-            add(new Client("petrica", "cnp", "address", company));
-            add(new Client("petrica", "cnp", "address", company));
-            add(new Client("petrica", "cnp", "address", company));
-            add(new Client("petrica", "cnp", "address", company));
-        }};
-        System.out.println("clients size: " + clients.size());
-        company.setClients(clients);
-        company.setReviews(reviews);
-        companyRepository.save(company);
-
-        Company company1 = new Company("nameCompany1", "email@compan1y.ro", "passhash1");
-        Set clients1 = new HashSet<Client>() {{
-            add(new Client("petrica1", "cnp", "address", company1));
-            add(new Client("petrica1", "cnp", "address", company1));
-            add(new Client("petrica1", "cnp", "address", company1));
-            add(new Client("petrica1", "cnp", "address", company1));
-            add(new Client("petrica1", "cnp", "address", company1));
-        }};
-        System.out.println("clients size: " + clients.size());
-        company1.setClients(clients1);
-        companyRepository.save(company1);
+//        CompanyEntity companyEntity1 = new CompanyEntity("nameCompany1", "email@compan1y.ro", "passhash1");
+//        Set clients1 = new HashSet<ClientEntity>() {{
+//            add(new ClientEntity("petrica1", "cnp", "address", companyEntity1));
+//            add(new ClientEntity("petrica1", "cnp", "address", companyEntity1));
+//            add(new ClientEntity("petrica1", "cnp", "address", companyEntity1));
+//            add(new ClientEntity("petrica1", "cnp", "address", companyEntity1));
+//            add(new ClientEntity("petrica1", "cnp", "address", companyEntity1));
+//        }};
+//        companyRepository.save(companyEntity1);
     }
 }
