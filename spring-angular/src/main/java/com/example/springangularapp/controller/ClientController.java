@@ -76,4 +76,17 @@ public class ClientController {
         return new ResponseEntity<String>("S-a introdus cu succes",HttpStatus.CREATED);
     }
 
+
+    //---------------------------get all clients from a company------------------------------
+
+    @RequestMapping(value = "/clients/{company_id}", method = RequestMethod.GET)
+    public ResponseEntity<List<Client>> listAllClientsByCompanyId(@PathVariable int company_id) {
+        List<Client> clients = clientRepository.findClientsByCompanyId(company_id);
+        if (clients.isEmpty()) {
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
+            // You many decide to return HttpStatus.NOT_FOUND
+        }
+        return new ResponseEntity<List<Client>>(clients, HttpStatus.OK);
+    }
+
 }

@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.awt.*;
+import java.util.List;
 
 
 @Controller
@@ -44,6 +45,14 @@ public class CompanyControler {
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(ucBuilder.path("/api/company/{id}").buildAndExpand(company.getId()).toUri());
         return new ResponseEntity<String>("S-a inregitrat  cu succes",HttpStatus.CREATED);
-
+    }
+    @RequestMapping(value = "/companies", method = RequestMethod.GET)
+    public ResponseEntity<java.util.List<Company>> listAllClients() {
+        java.util.List<Company> companies = (List<Company>) companyRepository.findAll();
+        if (companies.isEmpty()) {
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
+            // You many decide to return HttpStatus.NOT_FOUND
+        }
+        return new ResponseEntity<List<Company>>(companies, HttpStatus.OK);
     }
 }

@@ -1,5 +1,7 @@
 package com.example.springangularapp.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -19,13 +21,13 @@ public class Company {
     @Column(name = "password")
     private String password;
 
-
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "company")
     private Set<Client> clients = new HashSet<Client>();
 
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "company")
     private Set<Review> reviews = new HashSet<Review>();
+
 
     public Set<Client> getClients() {
         return clients;
@@ -68,7 +70,7 @@ public class Company {
         this.password = password;
     }
 
-    public Company() {
+    protected Company() {
     }
 
     public Company(String name, String email, String password) {

@@ -1,5 +1,7 @@
 package com.example.springangularapp.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -27,6 +29,7 @@ public class Client {
     @Column(name = "address")
     private String address;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "company_id")
     private Company company;
@@ -35,6 +38,13 @@ public class Client {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "client")
     private Set<Review> reviews = new HashSet<Review>();
 
+    public Set<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(Set<Review> reviews) {
+        this.reviews = reviews;
+    }
 
     public int getId() {
         return id;
@@ -68,12 +78,13 @@ public class Client {
         this.company = company;
     }
 
-    public Client(String name, String cnp, String address) {
+    public Client(String name, String cnp, String address, Company company) {
         this.name = name;
         this.cnp = cnp;
         this.address = address;
+        this.company = company;
     }
 
-    public Client() {
+    protected Client() {
     }
 }
