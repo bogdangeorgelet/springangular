@@ -12,14 +12,12 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.awt.*;
 import java.util.List;
+import java.util.Optional;
 
 
 @Controller
@@ -54,5 +52,18 @@ public class CompanyControler {
             // You many decide to return HttpStatus.NOT_FOUND
         }
         return new ResponseEntity<List<Company>>(companies, HttpStatus.OK);
+    }
+
+    //-------------------get company by id--------------------
+    @RequestMapping(value = "/company/{id}", method = RequestMethod.GET)
+    public ResponseEntity<?> getClient(@PathVariable("id") int id) {
+        logger.info("Fetching Company with id {}", id);
+        Optional<Company> company = companyRepository.findById(id);
+        if (company == null) {
+            logger.error("Client with id {} not found.", id);
+            return new ResponseEntity(new CustomErrorType("Client with id " + id
+                    + " not found"), HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<Company>(company.get(), HttpStatus.OK);
     }
 }

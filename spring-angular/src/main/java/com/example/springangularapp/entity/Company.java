@@ -25,6 +25,14 @@ public class Company {
     private Set<Client> clients = new HashSet<Client>();
 
 
+    public Set<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(Set<Review> reviews) {
+        this.reviews = reviews;
+    }
+
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "company")
     private Set<Review> reviews = new HashSet<Review>();
 

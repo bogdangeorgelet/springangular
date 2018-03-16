@@ -2,6 +2,7 @@ package com.example.springangularapp;
 
 import com.example.springangularapp.entity.Client;
 import com.example.springangularapp.entity.Company;
+import com.example.springangularapp.entity.Review;
 import com.example.springangularapp.repository.ClientRepository;
 import com.example.springangularapp.repository.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,12 @@ public class SpringAngularApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         Company company = new Company("nameCompany", "email@company.ro", "passhash");
+        Set reviews = new HashSet<Review>() {{
+            add(new Review("ceas", 4.0, company));
+            add(new Review("slab", 1.0, company));
+        }};
+
+
         Set clients = new HashSet<Client>() {{
             add(new Client("petrica", "cnp", "address", company));
             add(new Client("petrica", "cnp", "address", company));
@@ -39,6 +46,7 @@ public class SpringAngularApplication implements CommandLineRunner {
         }};
         System.out.println("clients size: " + clients.size());
         company.setClients(clients);
+        company.setReviews(reviews);
         companyRepository.save(company);
 
         Company company1 = new Company("nameCompany1", "email@compan1y.ro", "passhash1");
