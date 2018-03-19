@@ -44,7 +44,7 @@ public class ReviewEntity {
         dto.setId(id);
         dto.setText(text);
         dto.setValue(value);
-        dto.setClientName(companyEntity.getName());
+        dto.setCompanyName(companyEntity.getName());
         dto.setClientName(client.getName());
         return dto;
     }

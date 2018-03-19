@@ -29,17 +29,13 @@ public class ClientEntity {
     @Column(name = "address")
     private String address;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "company_id")
-    private CompanyEntity companyEntity;
-
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "client")
     private Set<ReviewEntity> reviewEntities = new HashSet<>();
 
 
     public static List<ClientDto> toDtos(List<ClientEntity> clients) {
-        return clients.stream().map(client -> client.toDto()).collect(Collectors.toList());
+        return clients.stream().map(ClientEntity::toDto).collect(Collectors.toList());
     }
 
     public ClientDto toDto() {
@@ -47,7 +43,7 @@ public class ClientEntity {
         dto.setName(name);
         dto.setAddress(address);
         dto.setCnp(cnp);
-        dto.setCompanyName(companyEntity.getName());
+        dto.setId(id);
         return dto;
     }
 

@@ -30,13 +30,14 @@ public class CompanyControler {
 //-------------------------------register companyEntity-----------------------------
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public ResponseEntity<?> createClient(@RequestBody CompanyDto companyDto, UriComponentsBuilder ucBuilder) {
-        logger.info("Creating ClientEntity : {}", companyDto);
+    public ResponseEntity<?> createCompany(@RequestBody CompanyDto companyDto, UriComponentsBuilder ucBuilder) {
+        logger.info("resgister company : {}", companyDto);
 
         if (companyRepository.findByEmail(companyDto.getEmail()) != null) {
             logger.error("Unable to create. A companyEntity with email {} already exist", companyDto.getEmail());
             return ResponseEntity.status(HttpStatus.CONFLICT).build();
         }
+        System.out.println("se slaveaza company");
 
         CompanyEntity companyEntity = new CompanyEntity();
         companyEntity.update(companyDto);

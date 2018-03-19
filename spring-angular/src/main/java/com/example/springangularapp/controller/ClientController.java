@@ -4,6 +4,7 @@ import com.example.springangularapp.Util.CustomErrorType;
 import com.example.springangularapp.dto.ClientDto;
 import com.example.springangularapp.entity.ClientEntity;
 import com.example.springangularapp.repository.ClientRepository;
+import com.example.springangularapp.repository.CompanyRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,8 @@ public class ClientController {
 
     @Autowired
     ClientRepository clientRepository;
+    @Autowired
+    CompanyRepository companyRepository;
 
     public static final Logger logger = LoggerFactory.getLogger(ClientController.class);
 
@@ -69,17 +72,4 @@ public class ClientController {
 
         return ResponseEntity.ok(HttpStatus.CREATED);
     }
-
-
-    //---------------------------get all clients from a companyEntity------------------------------
-
-    @RequestMapping(value = "/clients/company/{company_id}", method = RequestMethod.GET)
-    public ResponseEntity<List<ClientDto>> listAllClientsByCompanyId(@PathVariable int company_id) {
-        List<ClientEntity> clients = clientRepository.findClientsByCompanyEntityId(company_id);
-        if (clients.isEmpty()) {
-            return new ResponseEntity(HttpStatus.NO_CONTENT);
-        }
-        return ResponseEntity.ok(ClientEntity.toDtos(clients));
-    }
-
 }

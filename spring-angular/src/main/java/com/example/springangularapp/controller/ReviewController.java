@@ -58,11 +58,11 @@ public class ReviewController {
 
     @RequestMapping(value = "/reviews", method = RequestMethod.GET)
     public ResponseEntity<List<ReviewDto>> listAllReviews() {
-        List<ReviewEntity> clients = reviewRepository.findAll();
-        if (clients.isEmpty()) {
+        List<ReviewEntity> reviews = reviewRepository.findAll();
+        if (reviews.isEmpty()) {
             return ResponseEntity.noContent().build();
         }
-        return ResponseEntity.ok(ReviewEntity.toDtos(clients));
+        return ResponseEntity.ok(ReviewEntity.toDtos(reviews));
     }
 
 
@@ -76,9 +76,9 @@ public class ReviewController {
         Optional<CompanyEntity> company = companyRepository.findById(company_id);
         Optional<ClientEntity> client = clientRepository.findById(client_id);
         if (company.isPresent() && client.isPresent()) {
-            reviewDto.setClientName(client.get().getName());
-            reviewDto.setCompanyName(company.get().getName());
             ReviewEntity reviewEntity = new ReviewEntity();
+            reviewEntity.setClient(client.get());
+            reviewEntity.setCompanyEntity(company.get());
             reviewEntity.update(reviewDto);
             reviewRepository.save(reviewEntity);
             HttpHeaders headers = new HttpHeaders();

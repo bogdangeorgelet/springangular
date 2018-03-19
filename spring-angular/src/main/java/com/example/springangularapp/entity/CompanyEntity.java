@@ -29,9 +29,6 @@ public class CompanyEntity {
     @Column(name = "password")
     private String password;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "companyEntity")
-    private Set<ClientEntity> clients = new HashSet<>();
-
 
     public static List<CompanyDto> toDtos(List<CompanyEntity> clients) {
         return clients.stream().map(company -> company.toDto()).collect(Collectors.toList());
@@ -39,6 +36,7 @@ public class CompanyEntity {
 
     public CompanyDto toDto() {
         CompanyDto dto = new CompanyDto();
+        dto.setId(id);
         dto.setName(name);
         dto.setEmail(email);
         dto.setPassword(password);

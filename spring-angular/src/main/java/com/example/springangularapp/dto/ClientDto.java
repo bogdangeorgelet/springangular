@@ -8,11 +8,10 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class ClientDto {
-
+    private int Id;
     private String name;
     private String cnp;
     private String address;
-    private String companyName;
 
 
 }
