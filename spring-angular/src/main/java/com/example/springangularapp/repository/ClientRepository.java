@@ -9,7 +9,7 @@ import java.util.List;
 public interface ClientRepository extends CrudRepository<ClientEntity, Integer> {
     List<ClientEntity> findAll();
 
-    ClientEntity findByCnp(String email);
+    ClientEntity findByCnp(String cnp);
 
 
 }

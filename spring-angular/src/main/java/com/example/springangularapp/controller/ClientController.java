@@ -5,6 +5,7 @@ import com.example.springangularapp.dto.ClientDto;
 import com.example.springangularapp.entity.ClientEntity;
 import com.example.springangularapp.repository.ClientRepository;
 import com.example.springangularapp.repository.CompanyRepository;
+import com.example.springangularapp.service.ClientService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,11 +22,8 @@ import java.util.Optional;
 @RestController
 public class ClientController {
 
-
     @Autowired
-    ClientRepository clientRepository;
-    @Autowired
-    CompanyRepository companyRepository;
+    ClientService clientService;
 
     public static final Logger logger = LoggerFactory.getLogger(ClientController.class);
 
@@ -34,7 +32,8 @@ public class ClientController {
 
     @RequestMapping(value = "/clients", method = RequestMethod.GET)
     public ResponseEntity<List<ClientDto>> listAllClients() {
-        List<ClientEntity> clients = clientRepository.findAll();
+        System.out.println("se apeleaza CLIENTSSSS");
+        List<ClientEntity> clients = clientService.findAllClients();
         if (clients.isEmpty()) {
             return ResponseEntity.noContent().build();
         }
@@ -47,7 +46,7 @@ public class ClientController {
     @RequestMapping(value = "/client/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> getClient(@PathVariable("id") int id) {
         logger.info("Fetching ClientEntity with id {}", id);
-        Optional<ClientEntity> client = clientRepository.findById(id);
+        Optional<ClientEntity> client = clientService.findById(id);
         if (!client.isPresent()) {
             logger.error("ClientEntity with id {} not found.", id);
             return ResponseEntity.notFound().build();
@@ -56,19 +55,17 @@ public class ClientController {
         return ResponseEntity.ok(client.get().toDto());
     }
 
-    // -------------------Create a ClientEntity-------------------------------------------
-
     @RequestMapping(value = "/client", method = RequestMethod.POST)
     public ResponseEntity<?> createClient(@RequestBody ClientDto client, UriComponentsBuilder ucBuilder) {
         logger.info("Creating ClientEntity : {}", client);
 
-        if (clientRepository.findByCnp(client.getCnp()) != null) {
-            logger.error("Unable to create. A User with name {} already exist", client.getName());
+        if (clientService.findByCnp(client.getCnp()) != null) {
+            logger.error("Unable to create. A Client with cnp {} already exist", client.getCnp());
             return ResponseEntity.status(HttpStatus.CONFLICT).build();
         }
         ClientEntity clientEntity = new ClientEntity();
         clientEntity.update(client);
-        clientRepository.save(clientEntity);
+        clientService.saveClient(clientEntity);
 
         return ResponseEntity.ok(HttpStatus.CREATED);
     }
