@@ -15,6 +15,7 @@ import com.nulabinc.zxcvbn.Zxcvbn;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -45,6 +46,10 @@ public class CompanyControler {
     private EmailService emailService;
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    @Autowired
+    Environment environment;
+
     public static final Logger logger = LoggerFactory.getLogger(ClientController.class);
 
     @RequestMapping(value = "/companies", method = RequestMethod.GET)
@@ -148,8 +153,10 @@ public class CompanyControler {
             SimpleMailMessage registrationEmail = new SimpleMailMessage();
             registrationEmail.setTo(companyDto.getEmail());
             registrationEmail.setSubject("Registration Confirmation");
+            String port = environment.getProperty("local.server.port");
+            System.out.println("port:" + port);
             registrationEmail.setText("To confirm your e-mail address, please click the link below:\n"
-                    + appUrl + "/confirm?token=" + companyEntity.getConfirmationToken());
+                    + appUrl + ":" + port + "/confirm?token=" + companyEntity.getConfirmationToken());
             registrationEmail.setFrom("noreply@domain.com");
 
             emailService.sendEmail(registrationEmail);
