@@ -24,6 +24,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         CompanyEntity user = companyRepository.findByEmail(s);
+        if (user == null)
+            throw new UsernameNotFoundException("No user found with username: " + s);
 
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
 //        for (Role role : user.getRoles()){

@@ -1,15 +1,14 @@
 package com.example.springangularapp.entity;
 
-import com.example.springangularapp.dto.ClientDto;
 import com.example.springangularapp.dto.CompanyDto;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
-import java.util.HashSet;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @Getter
@@ -28,6 +27,12 @@ public class CompanyEntity {
 
     @Column(name = "password")
     private String password;
+
+    @Column(name = "enabled")
+    private boolean enabled;
+
+    @Column(name = "confirmation_token")
+    private String confirmationToken;
 
 
     public static List<CompanyDto> toDtos(List<CompanyEntity> clients) {

@@ -9,7 +9,11 @@ public interface CompanyService {
 
     void save(CompanyEntity companyEntity);
 
-    CompanyEntity findByCompanyEmail(String username);
-    List<CompanyEntity>  getAllCompanies();
+    CompanyEntity findByEmail(String email);
+
+    List<CompanyEntity> getAllCompanies();
+
     Optional<CompanyEntity> findCompanyById(int companyId);
+
+    CompanyEntity findByConfirmationToken(String confirmationToken);
 }

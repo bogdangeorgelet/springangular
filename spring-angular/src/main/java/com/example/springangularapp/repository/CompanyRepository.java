@@ -12,5 +12,6 @@ public interface CompanyRepository extends CrudRepository<CompanyEntity, Integer
 
     CompanyEntity findByEmail(String email);
     List<CompanyEntity>findAll();
+    CompanyEntity findByConfirmationToken(String confirmationToken);
 
 }

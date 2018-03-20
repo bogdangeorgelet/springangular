@@ -18,13 +18,13 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Override
     public void save(CompanyEntity companyEntity) {
-        companyEntity.setPassword(bCryptPasswordEncoder.encode(companyEntity.getPassword()));
+//        companyEntity.setPassword(bCryptPasswordEncoder.encode(companyEntity.getPassword()));
         companyRepository.save(companyEntity);
     }
 
     @Override
-    public CompanyEntity findByCompanyEmail(String username) {
-        return companyRepository.findByEmail(username);
+    public CompanyEntity findByEmail(String email) {
+        return companyRepository.findByEmail(email);
     }
 
     @Override
@@ -35,6 +35,11 @@ public class CompanyServiceImpl implements CompanyService {
     @Override
     public Optional<CompanyEntity> findCompanyById(int companyId) {
         return companyRepository.findById(companyId);
+    }
+
+    @Override
+    public CompanyEntity findByConfirmationToken(String confirmationToken) {
+        return companyRepository.findByConfirmationToken(confirmationToken);
     }
 
 }
