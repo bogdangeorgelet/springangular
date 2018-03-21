@@ -1,15 +1,11 @@
 package com.example.springangularapp.controller;
 
-import com.example.springangularapp.Util.CustomErrorType;
 import com.example.springangularapp.dto.ClientDto;
 import com.example.springangularapp.entity.ClientEntity;
-import com.example.springangularapp.repository.ClientRepository;
-import com.example.springangularapp.repository.CompanyRepository;
 import com.example.springangularapp.service.ClientService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -32,7 +28,6 @@ public class ClientController {
 
     @RequestMapping(value = "/clients", method = RequestMethod.GET)
     public ResponseEntity<List<ClientDto>> listAllClients() {
-        System.out.println("se apeleaza CLIENTSSSS");
         List<ClientEntity> clients = clientService.findAllClients();
         if (clients.isEmpty()) {
             return ResponseEntity.noContent().build();

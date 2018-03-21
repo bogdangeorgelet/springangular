@@ -1,17 +1,11 @@
 package com.example.springangularapp.controller;
 
 import com.example.springangularapp.Validator.UserValidator;
+import com.example.springangularapp.dto.CompanyDto;
+import com.example.springangularapp.entity.CompanyEntity;
 import com.example.springangularapp.service.CompanyService;
 import com.example.springangularapp.service.EmailService;
 import com.example.springangularapp.service.SecurityService;
-
-import java.util.Map;
-
-import com.example.springangularapp.dto.CompanyDto;
-import com.example.springangularapp.entity.CompanyEntity;
-import com.example.springangularapp.repository.CompanyRepository;
-import com.nulabinc.zxcvbn.Strength;
-import com.nulabinc.zxcvbn.Zxcvbn;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +13,6 @@ import org.springframework.core.env.Environment;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -28,6 +21,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -85,37 +79,52 @@ public class CompanyControler {
 
 // varianta fara email
 
-//    @RequestMapping(value = "/registration", method = RequestMethod.POST)
-//    public ModelAndView createNewUser(@Valid CompanyDto companyDto, BindingResult bindingResult) {
-//        ModelAndView modelAndView = new ModelAndView();
-//        CompanyEntity companyExist = companyService.findByEmail(companyDto.getEmail());
-//        if (companyExist != null) {
-//            bindingResult
-//                    .rejectValue("email", "error.user",
-//                            "There is already a user registered with the email provided");
-//        }
-//        if (bindingResult.hasErrors()) {
-//            modelAndView.setViewName("registration");
-//        } else {
-//            CompanyEntity companyEntity = new CompanyEntity();
-//            companyEntity.setPassword(companyDto.getPassword());
-//            companyEntity.setEmail(companyDto.getEmail());
-//            companyEntity.setName(companyDto.getName());
-//            companyService.save(companyEntity);
-//            modelAndView.addObject("successMessage", "User has been registered successfully");
-//            modelAndView.addObject("user", new CompanyDto());
-//            modelAndView.setViewName("registration");
-//
-//        }
-//        return modelAndView;
-//    }
-//
-//    @RequestMapping(value = {"/", "/login"}, method = RequestMethod.GET)
-//    public ModelAndView login() {
-//        ModelAndView modelAndView = new ModelAndView();
-//        modelAndView.setViewName("login");
-//        return modelAndView;
-//    }
+    @RequestMapping(value = "/registration", method = RequestMethod.POST)
+    public ModelAndView createNewUser(@Valid CompanyDto companyDto, BindingResult bindingResult) {
+        ModelAndView modelAndView = new ModelAndView();
+        CompanyEntity companyExist = companyService.findByEmail(companyDto.getEmail());
+        if (companyExist != null) {
+            bindingResult
+                    .rejectValue("email", "error.user",
+                            "There is already a user registered with the email provided");
+        }
+        if (bindingResult.hasErrors()) {
+            modelAndView.setViewName("registration");
+        } else {
+            CompanyEntity companyEntity = new CompanyEntity();
+            companyEntity.setPassword(bCryptPasswordEncoder.encode(companyDto.getPassword()));
+            companyEntity.setEmail(companyDto.getEmail());
+            companyEntity.setName(companyDto.getName());
+            companyService.save(companyEntity);
+            modelAndView.addObject("successMessage", "User has been registered successfully");
+            modelAndView.addObject("user", new CompanyDto());
+            modelAndView.setViewName("registration");
+
+        }
+        return modelAndView;
+    }
+
+    //
+    @RequestMapping(value = {"/", "/login"}, method = RequestMethod.GET)
+    public ModelAndView login() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("login");
+        return modelAndView;
+    }
+
+    @PostMapping(value = "/login")
+    public ModelAndView loginPost(@Valid CompanyDto companyDto) {
+        ModelAndView modelAndView = new ModelAndView();
+        CompanyEntity companyEntity = companyService.findByEmailAndPassword(companyDto.getEmail(), companyDto.getPassword());
+//        securityService.autologin(companyDto.getEmail(), companyDto.getPassword());
+        if (companyEntity != null) {
+            modelAndView.addObject("successMessage", "User has been loged successfully");
+        } else
+            modelAndView.addObject("errorMessage", "error");
+        modelAndView.setViewName("login");
+        return modelAndView;
+    }
+
 
     // varianta cu email
     @RequestMapping(value = "/register", method = RequestMethod.POST)
@@ -190,20 +199,6 @@ public class CompanyControler {
 
         modelAndView.setViewName("confirm");
 
-        Zxcvbn passwordCheck = new Zxcvbn();
-
-        Strength strength = passwordCheck.measure(requestParams.get("password").toString());
-
-//        if (strength.getScore() < 3) {
-//            bindingResult.reject("password");
-//
-//            redir.addFlashAttribute("errorMessage", "Your password is too weak.  Choose a stronger one.");
-//
-//            modelAndView.setViewName("redirect:confirm?token=" + requestParams.get("token"));
-//            System.out.println(requestParams.get("token"));
-//            return modelAndView;
-//        }
-
         // Find the user associated with the reset token
         CompanyEntity companyEntity = companyService.findByConfirmationToken(requestParams.get("token").toString());
 
@@ -234,17 +229,17 @@ public class CompanyControler {
 //
 //        return "redirect:/welcome";
 //    }
-    /// varianta veche
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String login(Model model, String error, String logout) {
-        if (error != null)
-            model.addAttribute("error", "Your username and password is invalid.");
-
-        if (logout != null)
-            model.addAttribute("message", "You have been logged out successfully.");
-
-        return "login";
-    }
+//    /// varianta veche
+//    @RequestMapping(value = "/login", method = RequestMethod.GET)
+//    public String login(Model model, String error, String logout) {
+//        if (error != null)
+//            model.addAttribute("error", "Your username and password is invalid.");
+//
+//        if (logout != null)
+//            model.addAttribute("message", "You have been logged out successfully.");
+//
+//        return "login";
+//    }
 
 }
 

@@ -22,7 +22,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     @Transactional(readOnly = true)
-    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String s) {
         CompanyEntity user = companyRepository.findByEmail(s);
         if (user == null)
             throw new UsernameNotFoundException("No user found with username: " + s);

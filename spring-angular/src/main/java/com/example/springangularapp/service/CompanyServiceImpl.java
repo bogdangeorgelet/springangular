@@ -28,6 +28,11 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
+    public CompanyEntity findByEmailAndPassword(String email, String password) {
+        return companyRepository.findByEmailAndPassword(email, password);
+    }
+
+    @Override
     public List<CompanyEntity> getAllCompanies() {
         return companyRepository.findAll();
     }

@@ -1,13 +1,11 @@
 package com.example.springangularapp.controller;
 
-import com.example.springangularapp.Util.CustomErrorType;
 import com.example.springangularapp.dto.ReviewDto;
 import com.example.springangularapp.entity.ClientEntity;
 import com.example.springangularapp.entity.CompanyEntity;
 import com.example.springangularapp.entity.ReviewEntity;
 import com.example.springangularapp.repository.ClientRepository;
 import com.example.springangularapp.repository.CompanyRepository;
-import com.example.springangularapp.repository.ReviewRepository;
 import com.example.springangularapp.service.ReviewService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

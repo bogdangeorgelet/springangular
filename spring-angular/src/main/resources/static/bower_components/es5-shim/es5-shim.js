@@ -120,7 +120,7 @@
     }(ObjectPrototype.hasOwnProperty));
 
     //
-    // Util
+    // util
     // ======
     //
 

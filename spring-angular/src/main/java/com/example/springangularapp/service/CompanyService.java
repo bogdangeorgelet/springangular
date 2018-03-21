@@ -11,6 +11,8 @@ public interface CompanyService {
 
     CompanyEntity findByEmail(String email);
 
+    CompanyEntity findByEmailAndPassword(String email, String password);
+
     List<CompanyEntity> getAllCompanies();
 
     Optional<CompanyEntity> findCompanyById(int companyId);

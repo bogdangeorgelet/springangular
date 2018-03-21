@@ -1,8 +1,6 @@
 package com.example.springangularapp.entity;
 
-import com.example.springangularapp.dto.ClientDto;
 import com.example.springangularapp.dto.ReviewDto;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -36,7 +34,7 @@ public class ReviewEntity {
 
 
     public static List<ReviewDto> toDtos(List<ReviewEntity> clients) {
-        return clients.stream().map(review -> review.toDto()).collect(Collectors.toList());
+        return clients.stream().map(ReviewEntity::toDto).collect(Collectors.toList());
     }
 
     public ReviewDto toDto() {

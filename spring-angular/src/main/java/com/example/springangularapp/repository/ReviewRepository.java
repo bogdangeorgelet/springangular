@@ -8,7 +8,9 @@ import java.util.List;
 
 
 public interface ReviewRepository extends CrudRepository<ReviewEntity, Integer> {
-    List<ReviewEntity> findReviewsByCompanyEntityId(int Id);
+    List<ReviewEntity> findReviewsByCompanyEntityId(int id);
+
     List<ReviewEntity> findAll();
-    List<ReviewEntity> findReviewsByClientId(int Id);
+
+    List<ReviewEntity> findReviewsByClientId(int id);
 }

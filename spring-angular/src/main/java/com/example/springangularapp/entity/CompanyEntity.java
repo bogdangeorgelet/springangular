@@ -36,7 +36,7 @@ public class CompanyEntity {
 
 
     public static List<CompanyDto> toDtos(List<CompanyEntity> clients) {
-        return clients.stream().map(company -> company.toDto()).collect(Collectors.toList());
+        return clients.stream().map(CompanyEntity::toDto).collect(Collectors.toList());
     }
 
     public CompanyDto toDto() {
