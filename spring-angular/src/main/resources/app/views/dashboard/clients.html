@@ -1,0 +1,29 @@
+<div>
+	<div ng-include="'menu.html'"></div>
+	<snap-dragger></snap-dragger>
+	<snap-content snap-opt-tap-to-close="false" class="bg-dark">
+		<a href="" snap-toggle="left" ng-click="menuOpen = !menuOpen">
+			<span class="menutoggle">
+				<i ng-hide="menuOpen" class="fa fa-bars fa-2x" ></i>
+				<i ng-show="menuOpen" class="fa fa-times fa-2x" ></i>
+			</span>
+		</a>
+
+		<div class="fr">
+			<h2>Clients</h2>
+		</div>
+		<span class="glyphicon glyphicon-dashboard bg-fade"></span>
+		<div class="jumbotron">
+			<div class="container">
+				<h1>See your clients here</h1>
+				<div ng-controller="ClientsCtrl as ctrl">
+					<!--<p ng-repeat="client in ctrl.clients">{{client.name}}</p>-->
+				</div>
+				<p>
+					<a ui-sref="addClient" class="btn btn-primary btn-lg btn-white">Add Client</a>
+					<a ui-sref="overview" class="btn btn-primary btn-lg btn-white">Back to Overview</a>
+				</p>
+			</div>
+		</div>
+	</snap-content>
+</div>
