@@ -8,16 +8,16 @@
         <div class="container">
             <h1>ADD REVIEW</h1>
             <span></span>
-            <form role=form class=bottom-75 ng-submit=submit()>
+            <form role=form class=bottom-75 ng-submit=addReview()>
                 <div class=container>
                     <div class=form-groups>
                         <div class=form-group>
-                            <label for="client-name"><b>Client Name</b></label>
-                            <input type=text class="form-control input-lg" name="client-name" placeholder="My Client">
+                            <label for="clientName"><b>Client Name</b></label>
+                            <input ng-model="clientName" type=text class="form-control input-lg" placeholder="My Client">
                         </div>
                         <div class=form-group>
-                            <label for="review"><b>Review</b></label>
-                            <input type=text class="form-control input-lg" name="review" placeholder="Your review">
+                            <label for="text"><b>Review</b></label>
+                            <input ng-model="text" type=text class="form-control input-lg"  placeholder="Your review">
                         </div>
                         <div class="stars">
                             <form action="">
@@ -35,7 +35,7 @@
                         </div>
 
                         <div class=button-container>
-                            <p> <a ui-sref="reviews" class="btn btn-primary btn-lg btn-white">Add Review</a></p>
+                            <button type=submit class="btn btn-primary btn-lg btn-white">Add Review</button>
                         </div>
                     </div>
                 </div>

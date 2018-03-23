@@ -16,14 +16,21 @@
 		<div class="jumbotron">
 			<div class="container">
 				<h1>See your clients here</h1>
-				<div ng-controller="ClientsCtrl as ctrl">
-					<!--<p ng-repeat="client in ctrl.clients">{{client.name}}</p>-->
-				</div>
+					<p ng-repeat="client in clients">{{::client.name}}</p>
 				<p>
 					<a ui-sref="addClient" class="btn btn-primary btn-lg btn-white">Add Client</a>
 					<a ui-sref="overview" class="btn btn-primary btn-lg btn-white">Back to Overview</a>
 				</p>
 			</div>
+
+			<table ng-table="vm.tableParams" class="table" show-filter="true">
+				<tr ng-repeat="user in $data">
+					<td title="'Name'" filter="{ name: 'text'}" sortable="'name'">
+						{{user.name}}</td>
+					<td title="'Age'" filter="{ age: 'number'}" sortable="'age'">
+						{{user.age}}</td>
+				</tr>
+			</table>
 		</div>
 	</snap-content>
 </div>

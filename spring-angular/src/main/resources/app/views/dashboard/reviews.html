@@ -16,6 +16,7 @@
         <div class="jumbotron">
             <div class="container">
                 <h1>See your reviews here</h1>
+                <p ng-repeat="review in reviews">{{review.clientName + " " + review.text + " " +review.value}}</p>
                 <p>
                     <a ui-sref="addReview" class="btn btn-primary btn-lg btn-white">Add Review</a>
                     <a ui-sref="overview" class="btn btn-primary btn-lg btn-white">Back to Overview</a>

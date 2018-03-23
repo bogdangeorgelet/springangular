@@ -7,27 +7,28 @@
  * # MainCtrl
  * Controller of yapp
  */
-angular.module('yapp', [])
-    .controller('ClientsCtrl', ClientsCtrl);
-   function ClientsCtrl() {
+var app = angular.module('yapp');
+    app.controller('ClientsCtrl', function($scope, $location) {
 
-        this.clients = [
-            {
-                "name": "client 1",
-                "cnp": "cnp nou 1 jbd",
-                "address": "address 1"
-            },
-            {
-                "name": "client 2",
-                "cnp": "cnp nou 2jbd",
-                "address": "address 2"
+        $scope.clients = [ {
+            "name": "client 1",
+            "cnp": "cnp 1",
+            "address": "address 1"
+        }];
+
+        $scope.addClient = function () {
+            $scope.clients.push({
+                "name": $scope.clientName,
+                "cnp": $scope.cnp,
+                "address": $scope.address
+            });
+            $scope.clientName = "";
+            $scope.cnp = "";
+            $scope.address = "";
+            console.log($scope.clients);
+
+            $location.path('/dashboard/clients');
+
             }
 
-        ];
-
-       /* angular.forEach($state.get(), function (item) {
-
-                $scope.clients.push({name: item.name, text: item.data.text});
-
-        });*/
     });
