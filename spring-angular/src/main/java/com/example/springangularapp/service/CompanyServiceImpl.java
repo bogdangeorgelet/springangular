@@ -13,13 +13,13 @@ import java.util.Optional;
 public class CompanyServiceImpl implements CompanyService {
     @Autowired
     private CompanyRepository companyRepository;
-    @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+//    @Autowired
+//    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
-    public void save(CompanyEntity companyEntity) {
+    public CompanyEntity save(CompanyEntity companyEntity) {
 //        companyEntity.setPassword(bCryptPasswordEncoder.encode(companyEntity.getPassword()));
-        companyRepository.save(companyEntity);
+        return companyRepository.save(companyEntity);
     }
 
     @Override

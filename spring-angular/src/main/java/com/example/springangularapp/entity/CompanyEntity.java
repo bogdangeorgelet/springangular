@@ -52,7 +52,6 @@ public class CompanyEntity {
     public CompanyEntity update(CompanyDto dto) {
         this.name = dto.getName();
         this.email = dto.getEmail();
-        this.password = dto.getPassword();
         return this;
     }
 }

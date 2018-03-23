@@ -1,9 +1,11 @@
 package com.example.springangularapp.entity;
 
+import ch.qos.logback.core.net.server.Client;
 import com.example.springangularapp.dto.ClientDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.domain.Page;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -37,6 +39,9 @@ public class ClientEntity {
     public static List<ClientDto> toDtos(List<ClientEntity> clients) {
         return clients.stream().map(ClientEntity::toDto).collect(Collectors.toList());
     }
+//    public static Page<ClientDto> pageToDto(Page<ClientEntity> clients){
+//        return clients.stream().map(ClientEntity::toDto).collect(Collectors.pa);
+//    }
 
     public ClientDto toDto() {
         ClientDto dto = new ClientDto();

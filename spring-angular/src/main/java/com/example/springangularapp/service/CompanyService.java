@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface CompanyService {
 
-    void save(CompanyEntity companyEntity);
+    CompanyEntity save(CompanyEntity companyEntity);
 
     CompanyEntity findByEmail(String email);
 
