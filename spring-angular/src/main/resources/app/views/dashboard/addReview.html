@@ -1,0 +1,47 @@
+<div class=login-page>
+    <div class=img-container>
+        <div class="text-center pull-right photo">
+            <img src=images/star.png>
+        </div>
+    </div>
+    <div class=form-content>
+        <div class="container">
+            <h1>ADD REVIEW</h1>
+            <span></span>
+            <form role=form class=bottom-75 ng-submit=addReview()>
+                <div class=container>
+                    <div class=form-groups>
+                        <div class=form-group>
+                            <label for="clientName"><b>Client Name</b></label>
+                            <input ng-model="clientName" type=text class="form-control input-lg" placeholder="My Client">
+                        </div>
+                        <div class=form-group>
+                            <label for="text"><b>Review</b></label>
+                            <input ng-model="text" type=text class="form-control input-lg"  placeholder="Your review">
+                        </div>
+                        <div class="stars">
+                            <form action="">
+                                <input class="star star-5" id="star-5" type="radio" name="star"/>
+                                <label class="star star-5" for="star-5"></label>
+                                <input class="star star-4" id="star-4" type="radio" name="star"/>
+                                <label class="star star-4" for="star-4"></label>
+                                <input class="star star-3" id="star-3" type="radio" name="star"/>
+                                <label class="star star-3" for="star-3"></label>
+                                <input class="star star-2" id="star-2" type="radio" name="star"/>
+                                <label class="star star-2" for="star-2"></label>
+                                <input class="star star-1" id="star-1" type="radio" name="star"/>
+                                <label class="star star-1" for="star-1"></label>
+                            </form>
+                        </div>
+
+                        <div class=button-container>
+                            <button type=submit class="btn btn-primary btn-lg btn-white">Add Review</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
