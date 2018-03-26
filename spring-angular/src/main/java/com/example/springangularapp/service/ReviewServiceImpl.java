@@ -14,6 +14,7 @@ public class ReviewServiceImpl implements ReviewService {
 
     @Override
     public List<ReviewEntity> findReviewsByCompanyEntityId(int companyId) {
+
         return reviewRepository.findReviewsByCompanyEntityId(companyId);
     }
 
