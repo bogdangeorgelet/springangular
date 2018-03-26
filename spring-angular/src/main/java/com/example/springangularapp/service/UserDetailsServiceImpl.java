@@ -30,11 +30,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             throw new UsernameNotFoundException("No user found with username: " + s);
 
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
-        grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
-//        for (Role role : user.getRoles()){
-//            grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));
-//        }
-
+        grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_USER"));
         User user1 = new User(user.getEmail(), user.getPassword(), grantedAuthorities);
         return user1;
     }

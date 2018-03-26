@@ -22,6 +22,7 @@ public class ClientController {
 
     @Autowired
     ClientService clientService;
+
     @Autowired
     ClientRepository clientRepository;
 

@@ -10,8 +10,6 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import java.util.List;
 
 public interface ClientRepository extends PagingAndSortingRepository<ClientEntity, Integer> {
-//    List<ClientEntity> findAll();
-
     @Override
     Page<ClientEntity> findAll(Pageable pageable);
 
