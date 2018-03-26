@@ -27,7 +27,12 @@ angular.module('yapp', [
                 'ngAnimate'
             ])
         .config(function($stateProvider, $urlRouterProvider) {
-            $urlRouterProvider.when('/dashboard', '/dashboard/overview');
+            $urlRouterProvider.when('/dashboard', '/dashboard/overview')
+                .when('/clients',{
+                    templateUrl: 'views/dashboard/clients.html',
+                    controller: 'ClientsCtrl'
+        });
+
             $urlRouterProvider.otherwise('/login');
             
             angular.forEach(states, function (state) {
