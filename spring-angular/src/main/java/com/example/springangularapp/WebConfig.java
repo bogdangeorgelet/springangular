@@ -17,14 +17,16 @@ public class WebConfig extends WebMvcConfigurerAdapter{
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/resources/app/scripts/**")
-                .addResourceLocations("/resources/app/scripts/");
-        registry.addResourceHandler("/resources/app/styles/**")
-                .addResourceLocations("/resources/app/styles");
-        registry.addResourceHandler("/resources/app/views/**")
-                .addResourceLocations("/resources/app/views/");
-        registry.addResourceHandler("/resources/app/**")
-                .addResourceLocations("/resources/app");
+        registry.addResourceHandler("/resources/static/app/scripts/**")
+                .addResourceLocations("/resources/static/app/scripts/");
+        registry.addResourceHandler("/resources/static/app/styles/**")
+                .addResourceLocations("/resources/static/app/styles");
+        registry.addResourceHandler("/resources/static/app/views/**")
+                .addResourceLocations("/resources/static/app/views/");
+        registry.addResourceHandler("/resources/static/app/**")
+                .addResourceLocations("/resources/static/app");
+        registry.addResourceHandler("/resources/static/**")
+                .addResourceLocations("/resources/static/");
     }
 
     @Bean
