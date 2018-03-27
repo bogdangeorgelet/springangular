@@ -1,8 +1,10 @@
 package com.example.springangularapp.springangular;
 
 import com.example.springangularapp.SpringAngularApplication;
+import com.example.springangularapp.dto.ClientDto;
 import com.example.springangularapp.entity.ClientEntity;
 import com.example.springangularapp.repository.ClientRepository;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,11 +17,13 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import java.io.IOException;
 import java.nio.charset.Charset;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @RunWith(SpringRunner.class)
@@ -34,6 +38,7 @@ public class ClientControlerTest {
 
     @Autowired
     private WebApplicationContext context;
+
 
     @Before
     public void setup() {
@@ -68,10 +73,56 @@ public class ClientControlerTest {
     }
 
     @Test
-    public void getClientByid() throws Exception {
-        mockMvc.perform(get("/client/2"))
+    public void getClientByid_ShouldReturnClientById() throws Exception {
+
+        ClientEntity client2 = new ClientEntity();
+        client2.setName("client2");
+        client2.setCnp("4321");
+        client2.setAddress("Bihor");
+        ClientEntity clientEntity = clientRepository.save(client2);
+
+        mockMvc.perform(get("/client/" + clientEntity.getId()))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(new MediaType(MediaType.APPLICATION_JSON.getType(), MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8"))))
-                .andExpect(jsonPath("$.name", is("petrica")));
+                .andExpect(jsonPath("$.name", is("client2")))
+                .andExpect(content().contentType(new MediaType(MediaType.APPLICATION_JSON.getType(), MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8"))))
+                .andExpect(jsonPath("$.cnp", is("4321")))
+                .andExpect(jsonPath("$.address", is("Bihor")));
+
+    }
+
+    @Test
+    public void insertClient_ShouldInsertAClient() throws Exception {
+        ClientDto clientDto = new ClientDto();
+        clientDto.setCnp("123");
+        clientDto.setAddress("oradea mare");
+        clientDto.setName("petrica");
+
+//        String json = gson.toJson(clientDto);
+        System.out.println("json:" + jsonWrapper());
+        mockMvc.perform(post("/client")
+                .contentType(new MediaType(MediaType.APPLICATION_JSON.getType(), MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8")))
+                .content(jsonWrapper()))
+                .andExpect(status().isOk());
+
+    }
+
+    public String jsonWrapper() {
+        ClientDto clientDto = new ClientDto();
+        clientDto.setCnp("123");
+        clientDto.setAddress("oradea mare");
+        clientDto.setName("petrica");
+        ObjectMapper mapperObj = new ObjectMapper();
+
+        try {
+            // get Employee object as a json string
+            String jsonStr = mapperObj.writeValueAsString(clientDto);
+            System.out.println(jsonStr);
+            return jsonStr;
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return null;
     }
 }

@@ -22,7 +22,7 @@ import java.util.Optional;
 @RestController
 public class ReviewController {
     public static final Logger logger = LoggerFactory.getLogger(ClientController.class);
-//    @Autowired
+    //    @Autowired
 //    ReviewRepository reviewRepository;
     @Autowired
     ReviewService reviewService;
@@ -31,8 +31,6 @@ public class ReviewController {
     @Autowired
     ClientRepository clientRepository;
 
-
-    //---------------------------get all reviewEntities from a companyEntity by Id------------------------------
 
     @RequestMapping(value = "/reviews/company/{company_id}", method = RequestMethod.GET)
     public ResponseEntity<List<ReviewDto>> listAllReviewsByCompanyId(@PathVariable int company_id) {
@@ -43,10 +41,10 @@ public class ReviewController {
         return ResponseEntity.ok(ReviewEntity.toDtos(reviewEntities));
     }
 
-    //---------------------------get all reviewEntities from a client by Id------------------------------
 
     @RequestMapping(value = "/reviews/client/{client_id}", method = RequestMethod.GET)
     public ResponseEntity<List<ReviewDto>> listAllReviewsByClientId(@PathVariable int client_id) {
+        System.out.println("client id:" + client_id);
         List<ReviewEntity> reviewEntities = reviewService.findReviewsByClientId(client_id);
         if (reviewEntities.isEmpty()) {
             return ResponseEntity.noContent().build();
@@ -54,8 +52,6 @@ public class ReviewController {
         return ResponseEntity.ok(ReviewEntity.toDtos(reviewEntities));
     }
 
-
-    // -------------------Retrieve All Clients---------------------------------------------
 
     @RequestMapping(value = "/reviews", method = RequestMethod.GET)
     public ResponseEntity<List<ReviewDto>> listAllReviews() {
@@ -66,8 +62,6 @@ public class ReviewController {
         return ResponseEntity.ok(ReviewEntity.toDtos(reviews));
     }
 
-
-    // -------------------Insert a review-------------------------------------------
 
     @RequestMapping(value = "/review/company/{company_id}/client/{client_id}", method = RequestMethod.POST)
     public ResponseEntity<?> createClient(@RequestBody ReviewDto reviewDto, @PathVariable int company_id, @PathVariable int client_id, UriComponentsBuilder ucBuilder) {

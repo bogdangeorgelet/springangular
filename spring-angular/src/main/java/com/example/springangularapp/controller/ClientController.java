@@ -12,7 +12,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.Optional;
 
@@ -29,12 +28,12 @@ public class ClientController {
     public static final Logger logger = LoggerFactory.getLogger(ClientController.class);
 
 
-    // -------------------Retrieve All Clients---------------------------------------------
 
     @GetMapping(value = "/clients")
     Page<ClientDto> getAllClients(Pageable pageable) {
         return clientRepository.findAll(pageable).map(ClientEntity::toDto);
     }
+
 
 //    @RequestMapping(value = "/clients", method = RequestMethod.GET)
 //    public ResponseEntity<List<ClientDto>> listAllClients() {
@@ -46,7 +45,6 @@ public class ClientController {
 //    }
 
 
-    // -------------------Retrieve Single ClientEntity------------------------------------------
 
     @RequestMapping(value = "/client/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> getClient(@PathVariable("id") int id) {
@@ -61,7 +59,7 @@ public class ClientController {
     }
 
     @RequestMapping(value = "/client", method = RequestMethod.POST)
-    public ResponseEntity<?> createClient(@RequestBody ClientDto client, UriComponentsBuilder ucBuilder) {
+    public ResponseEntity<?> createClient(@RequestBody ClientDto client) {
         logger.info("Creating ClientEntity : {}", client);
 
         if (clientService.findByCnp(client.getCnp()) != null) {

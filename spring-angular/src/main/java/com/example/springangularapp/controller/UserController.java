@@ -51,26 +51,26 @@ public class UserController {
         return principal;
     }
 
-    @PostMapping(value = "/login")
-    public ResponseEntity<?> loginPost(@RequestBody CompanyDto companyDto) {
-        System.out.println("login");
-        System.out.println("user:" + companyDto.getEmail() + " parola:" + companyDto.getPassword());
-        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(companyDto.getEmail(), companyDto.getPassword());
-        String email = token.getName();
-        logger.info("Emailul dupa auth :" + email + " company:" + companyService.findByEmail(email));
-        CompanyEntity companyEntity = email == null ? null : companyService.findByEmail(email);
-        if (companyEntity == null)
-            return new ResponseEntity<>("Invalid email", HttpStatus.NOT_FOUND);
-        String password = companyEntity.getPassword();
-        boolean passwordMatch = bCryptPasswordEncoder.matches(token.getCredentials().toString(), password);
-        if (!passwordMatch)
-            return new ResponseEntity<>("Invalid password", HttpStatus.NOT_FOUND);
-
-//        CompanyEntity companyEntity = companyService.findByEmailAndPassword(companyDto.getEmail(), companyDto.getPassword());
-//        if (companyEntity != null) {
-//            return ResponseEntity.ok(companyEntity.toDto());
-//        } else
-//            return ResponseEntity.notFound().build();
-        return ResponseEntity.ok(companyEntity.toDto());
-    }
+//    @PostMapping(value = "/login")
+//    public ResponseEntity<?> loginPost(@RequestBody CompanyDto companyDto) {
+//        System.out.println("login");
+//        System.out.println("user:" + companyDto.getEmail() + " parola:" + companyDto.getPassword());
+//        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(companyDto.getEmail(), companyDto.getPassword());
+//        String email = token.getName();
+//        logger.info("Emailul dupa auth :" + email + " company:" + companyService.findByEmail(email));
+//        CompanyEntity companyEntity = email == null ? null : companyService.findByEmail(email);
+//        if (companyEntity == null)
+//            return new ResponseEntity<>("Invalid email", HttpStatus.NOT_FOUND);
+//        String password = companyEntity.getPassword();
+//        boolean passwordMatch = bCryptPasswordEncoder.matches(token.getCredentials().toString(), password);
+//        if (!passwordMatch)
+//            return new ResponseEntity<>("Invalid password", HttpStatus.NOT_FOUND);
+//
+////        CompanyEntity companyEntity = companyService.findByEmailAndPassword(companyDto.getEmail(), companyDto.getPassword());
+////        if (companyEntity != null) {
+////            return ResponseEntity.ok(companyEntity.toDto());
+////        } else
+////            return ResponseEntity.notFound().build();
+//        return ResponseEntity.ok(companyEntity.toDto());
+//    }
 }
