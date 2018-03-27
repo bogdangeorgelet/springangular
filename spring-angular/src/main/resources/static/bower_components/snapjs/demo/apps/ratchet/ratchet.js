@@ -27,7 +27,7 @@
     document.body.removeChild(backdrop);
     popover.style.display = 'none';
     popover.removeEventListener('webkitTransitionEnd', onPopoverHidden);
-  }
+  };
 
   var backdrop = function () {
     var element = document.createElement('div');
@@ -52,7 +52,7 @@
     if (!popover || !popover.classList.contains('popover')) return;
 
     return popover;
-  }
+  };
 
   window.addEventListener('touchend', function (e) {
     var popover = getPopover(e);
@@ -98,7 +98,7 @@
     bartitle           : '.bar-title',
     barfooter          : '.bar-footer',
     barheadersecondary : '.bar-header-secondary'
-  }
+  };
 
   var cacheReplace = function (data, updates) {
     PUSH.id = data.id;
@@ -228,7 +228,7 @@
     if (transitionFromObj.transition) {
       activeObj = extendWithDom(activeObj, '.content', activeDom.cloneNode(true));
       for (key in bars) {
-        barElement = document.querySelector(bars[key])
+        barElement = document.querySelector(bars[key]);
         if (activeObj[key]) swapContent(activeObj[key], barElement);
         else if (barElement) barElement.parentNode.removeChild(barElement);
       }
@@ -308,7 +308,7 @@
 
     if (options.transition) {
       for (key in bars) {
-        barElement = document.querySelector(bars[key])
+        barElement = document.querySelector(bars[key]);
         if (data[key]) swapContent(data[key], barElement);
         else if (barElement) barElement.parentNode.removeChild(barElement);
       }
@@ -325,8 +325,8 @@
       triggerStateChange();
     });
 
-    if (!options.ignorePush && window._gaq) _gaq.push(['_trackPageview']) // google analytics
-    if (!options.hash) return;
+    if (!options.ignorePush && window._gaq) _gaq.push(['_trackPageview']); // google analytics
+    if (!options.hash)
   };
 
   var failure = function (url) {
@@ -387,8 +387,8 @@
 
     if (/slide/.test(transition)) {
       container.offsetWidth; // force reflow
-      swapDirection      = enter ? 'right' : 'left'
-      containerDirection = enter ? 'left' : 'right'
+      swapDirection      = enter ? 'right' : 'left';
+      containerDirection = enter ? 'left' : 'right';
       container.classList.add(containerDirection);
       swap.classList.remove(swapDirection);
       swap.addEventListener('webkitTransitionEnd', slideEnd);
@@ -459,7 +459,7 @@
     if (/<html/i.test(responseText)) {
       head           = document.createElement('div');
       body           = document.createElement('div');
-      head.innerHTML = responseText.match(/<head[^>]*>([\s\S.]*)<\/head>/i)[0]
+      head.innerHTML = responseText.match(/<head[^>]*>([\s\S.]*)<\/head>/i)[0];
       body.innerHTML = responseText.match(/<body[^>]*>([\s\S.]*)<\/body>/i)[0]
     } else {
       head           = body = document.createElement('div');
@@ -480,7 +480,7 @@
   // ==========================
 
   window.addEventListener('touchstart', function () { isScrolling = false; });
-  window.addEventListener('touchmove', function () { isScrolling = true; })
+  window.addEventListener('touchmove', function () { isScrolling = true; });
   window.addEventListener('touchend', touchend);
   window.addEventListener('click', function (e) { if (getTarget(e)) e.preventDefault(); });
   window.addEventListener('popstate', popstate);
@@ -559,7 +559,7 @@
     for (; target && target !== document; target = target.parentNode) {
       for (i = sliders.length; i--;) { if (sliders[i] === target) return target; }
     }
-  }
+  };
 
   var getScroll = function () {
     var translate3d = slider.style.webkitTransform.match(/translate3d\(([^,]*)/);
@@ -572,7 +572,7 @@
     slideNumber += offset;
     slideNumber = Math.min(slideNumber, 0);
     slideNumber = Math.max(-(slider.children.length - 1), slideNumber);
-  }
+  };
 
   var onTouchStart = function (e) {
     slider = getSlider(e.target);
@@ -663,7 +663,7 @@
     for (; target && target !== document; target = target.parentNode) {
       for (i = toggles.length; i--;) { if (toggles[i] === target) return target; }
     }
-  }
+  };
 
   window.addEventListener('touchstart', function (e) {
     e = e.originalEvent || e;
