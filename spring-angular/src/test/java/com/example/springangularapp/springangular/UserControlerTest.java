@@ -26,6 +26,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebAppConfiguration
 public class UserControlerTest {
 
+    MediaType mediaType=new MediaType(MediaType.APPLICATION_JSON.getType(), MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8"));
+
     private MockMvc mockMvc;
 
 
@@ -42,7 +44,7 @@ public class UserControlerTest {
     public void register_shouldRegisterAnewCompany() throws Exception {
 
         mockMvc.perform(post("/register")
-                .contentType(new MediaType(MediaType.APPLICATION_JSON.getType(), MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8")))
+                .contentType(mediaType)
                 .content(jsonWrapper()))
                 .andExpect(status().isCreated());
     }
@@ -52,7 +54,7 @@ public class UserControlerTest {
     @Test
     public void login_shouldLoginACompany() throws Exception{
         mockMvc.perform(post("/login")
-                .contentType(new MediaType(MediaType.APPLICATION_JSON.getType(), MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8"))))
+                .contentType(mediaType))
                 .andExpect(status().isOk());
     }
 

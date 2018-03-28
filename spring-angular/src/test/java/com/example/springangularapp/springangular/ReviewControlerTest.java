@@ -49,9 +49,6 @@ public class ReviewControlerTest {
     private ReviewRepository reviewRepository;
 
     @Autowired
-    private ReviewService reviewService;
-
-    @Autowired
     private UserController userController;
 
     @Autowired
@@ -62,6 +59,8 @@ public class ReviewControlerTest {
 
     @Autowired
     private WebApplicationContext context;
+
+    MediaType mediaType = new MediaType(MediaType.APPLICATION_JSON.getType(), MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8"));
 
     @Before
     public void setup() {
@@ -91,13 +90,13 @@ public class ReviewControlerTest {
         CompanyEntity c = companyRepository.findByEmail("nu@are.com");
         System.out.println("id companie gasit dupa email:" + c.getId());
         reviewEntity.setCompanyEntity(c);
-        ReviewEntity reviewEntity1 = reviewRepository.save(reviewEntity);
+        reviewRepository.save(reviewEntity);
 
         System.out.println("id companie:" + 1);
         mockMvc.
                 perform(get("/reviews/company/" + 1))
                 .andExpect(status().isOk())
-                .andExpect(content().contentType(new MediaType(MediaType.APPLICATION_JSON.getType(), MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8"))))
+                .andExpect(content().contentType(mediaType))
                 .andExpect(jsonPath("$", hasSize(1)))
                 .andExpect(jsonPath("$[0].value", is(5.0)))
                 .andExpect(jsonPath("$[0].text", is("ok")))
@@ -154,7 +153,7 @@ public class ReviewControlerTest {
 
         mockMvc.perform(get("/reviews"))
                 .andExpect(status().isOk())
-                .andExpect(content().contentType(new MediaType(MediaType.APPLICATION_JSON.getType(), MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8"))))
+                .andExpect(content().contentType(mediaType))
                 .andExpect(jsonPath("$", hasSize(2)))
                 .andExpect(jsonPath("$[0].value", is(5.0)))
                 .andExpect(jsonPath("$[0].text", is("ok")))
@@ -179,7 +178,7 @@ public class ReviewControlerTest {
 
 
         mockMvc.perform(post("/review/company/1client/1")
-                .contentType(new MediaType(MediaType.APPLICATION_JSON.getType(), MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8")))
+                .contentType(mediaType)
                 .content(jsonWrapper()))
                 .andExpect(status().isOk());
     }
@@ -219,14 +218,13 @@ public class ReviewControlerTest {
         ReviewDto reviewDto = new ReviewDto();
         reviewDto.setValue(5);
         reviewDto.setText("ok");
+
         ObjectMapper mapperObj = new ObjectMapper();
 
         try {
             String jsonStr = mapperObj.writeValueAsString(reviewDto);
-            System.out.println(jsonStr);
             return jsonStr;
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return null;

@@ -21,10 +21,7 @@ import java.nio.charset.Charset;
 import static org.hamcrest.Matchers.hasSize;
 import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = {SpringAngularApplication.class})
@@ -34,13 +31,11 @@ public class CompanyControlerTest {
     private MockMvc mockMvc;
 
     @Autowired
-    private ClientRepository clientRepository;
-
-    @Autowired
     private WebApplicationContext context;
     @Autowired
     private UserController userController;
 
+    MediaType mediaType = new MediaType(MediaType.APPLICATION_JSON.getType(), MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8"));
 
     @Before
     public void setup() {
@@ -56,7 +51,7 @@ public class CompanyControlerTest {
         userController.createUser(companyDto);
         mockMvc.perform(get("/companies"))
                 .andExpect(status().isOk())
-                .andExpect(content().contentType(new MediaType(MediaType.APPLICATION_JSON.getType(), MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8"))))
+                .andExpect(content().contentType(mediaType))
                 .andExpect(jsonPath("$", hasSize(1)))
                 .andExpect(jsonPath("$[0].name", is("petrica")))
                 .andExpect(jsonPath("$[0].email", is("nu@are.com")));
@@ -72,7 +67,7 @@ public class CompanyControlerTest {
         userController.createUser(companyDto);
         mockMvc.perform(get("/company/1"))
                 .andExpect(status().isOk())
-                .andExpect(content().contentType(new MediaType(MediaType.APPLICATION_JSON.getType(), MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8"))))
+                .andExpect(content().contentType(mediaType))
                 .andExpect(jsonPath("$.name", is("petrica")))
                 .andExpect(jsonPath("$.email", is("nu@are.com")));
 

@@ -115,12 +115,9 @@ public class ClientControlerTest {
         ObjectMapper mapperObj = new ObjectMapper();
 
         try {
-            // get Employee object as a json string
             String jsonStr = mapperObj.writeValueAsString(clientDto);
-            System.out.println(jsonStr);
             return jsonStr;
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return null;

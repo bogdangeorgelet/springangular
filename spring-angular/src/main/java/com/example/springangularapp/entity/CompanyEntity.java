@@ -3,6 +3,7 @@ package com.example.springangularapp.entity;
 import com.example.springangularapp.dto.CompanyDto;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.validator.constraints.Email;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

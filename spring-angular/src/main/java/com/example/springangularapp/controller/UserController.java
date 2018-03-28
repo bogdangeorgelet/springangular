@@ -3,6 +3,7 @@ package com.example.springangularapp.controller;
 import com.example.springangularapp.dto.CompanyDto;
 import com.example.springangularapp.entity.CompanyEntity;
 import com.example.springangularapp.service.CompanyService;
+import com.example.springangularapp.util.CustomErrorType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.mail.internet.InternetAddress;
 import java.security.Principal;
 
 
@@ -34,7 +36,13 @@ public class UserController {
         CompanyEntity user = companyService.findByEmail(newUser.getEmail());
         if (user != null) {
             logger.error("username Already exist " + newUser.getEmail());
-            return new ResponseEntity("username Already exist", HttpStatus.CONFLICT);
+            return new ResponseEntity<>("username Already exist", HttpStatus.CONFLICT);
+        }
+        if (!validateEmail(newUser.getEmail())) {
+            CustomErrorType customErrorType = new CustomErrorType();
+            customErrorType.setErrorCode(HttpStatus.CONFLICT.value());
+            customErrorType.setErrorMessage("Invalid email");
+            return new ResponseEntity<CustomErrorType>(customErrorType, HttpStatus.CONFLICT);
         }
         CompanyEntity companyEntity = new CompanyEntity();
         companyEntity.setEmail(newUser.getEmail());
@@ -51,7 +59,7 @@ public class UserController {
         return principal;
     }
 
-//    @PostMapping(value = "/login")
+    //    @PostMapping(value = "/login")
 //    public ResponseEntity<?> loginPost(@RequestBody CompanyDto companyDto) {
 //        System.out.println("login");
 //        System.out.println("user:" + companyDto.getEmail() + " parola:" + companyDto.getPassword());
@@ -73,4 +81,15 @@ public class UserController {
 ////            return ResponseEntity.notFound().build();
 //        return ResponseEntity.ok(companyEntity.toDto());
 //    }
+    private boolean validateEmail(String email) {
+        boolean isValid = false;
+        try {
+            InternetAddress internetAddress = new InternetAddress(email);
+            internetAddress.validate();
+            isValid = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return isValid;
+    }
 }

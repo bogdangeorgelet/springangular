@@ -22,8 +22,6 @@ import java.util.Optional;
 @RestController
 public class ReviewController {
     public static final Logger logger = LoggerFactory.getLogger(ClientController.class);
-    //    @Autowired
-//    ReviewRepository reviewRepository;
     @Autowired
     ReviewService reviewService;
     @Autowired
@@ -63,8 +61,8 @@ public class ReviewController {
     }
 
 
-    @RequestMapping(value = "/review/company/{company_id}/client/{client_id}", method = RequestMethod.POST)
-    public ResponseEntity<?> createClient(@RequestBody ReviewDto reviewDto, @PathVariable int company_id, @PathVariable int client_id, UriComponentsBuilder ucBuilder) {
+    @RequestMapping(value = "/review/", method = RequestMethod.POST)
+    public ResponseEntity<?> createClient(@RequestBody ReviewDto reviewDto, @RequestParam int company_id, @RequestParam int client_id, UriComponentsBuilder ucBuilder) {
         logger.info("Creating reviewDto : {}", reviewDto);
         System.out.println("companyEntity id:" + company_id);
         System.out.println("clieny id:" + client_id);
@@ -76,8 +74,10 @@ public class ReviewController {
             reviewEntity.setCompanyEntity(company.get());
             reviewEntity.update(reviewDto);
             reviewService.saveReview(reviewEntity);
-            HttpHeaders headers = new HttpHeaders();
-            headers.setLocation(ucBuilder.path("/api/client/{id}").buildAndExpand(reviewDto.getId()).toUri());
+
+//            HttpHeaders headers = new HttpHeaders();
+//            headers.setLocation(ucBuilder.path("/api/client/{id}").buildAndExpand(reviewDto.getId()).toUri());
+
             return ResponseEntity.ok(HttpStatus.CREATED);
         } else
             return ResponseEntity.status(HttpStatus.CONFLICT).build();
